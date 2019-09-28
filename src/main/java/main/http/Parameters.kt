@@ -5,10 +5,13 @@ import javax.servlet.http.HttpServletRequest
 
 class Parameters(val httpServletRequest: HttpServletRequest) {
 
-    companion object{
-        public final val hasKey:Byte = 1
-        public final val hasValue:Byte = 2
-        public final val match:Byte = 3
+    companion object {
+        public final val hasKey: Byte = 1
+        public final val matchKey: Byte = 2
+        public final val hasValue: Byte = 3
+        public final val matchValue: Byte = 4
+        public final val match: Byte = 5
+        public final val count: Byte = 6
     }
 
     private val parameters: Map<String, String>
@@ -16,29 +19,26 @@ class Parameters(val httpServletRequest: HttpServletRequest) {
 
     public fun hasKey(key: String) = parameters.containsKey(key)
 
-    public fun hasValue(key: String, value: String) = parameters[key] == value
+    public fun matchKey(keyRegex: Regex) = parameters.filterKeys { keyRegex.containsMatchIn(it) }.isNotEmpty()
 
-    public fun matchValue(key: Regex, value: Regex): Boolean {
-        parameters.filter { it.key.matches(key) }.forEach{
-            println(Pair(it.key, it.value))
-            if(!it.value.matches(value))
-                return false
-        }
-        return true
-    }
-
-    public fun match(key: String, regex: Regex):Boolean {
-        val result = parameters[key]
-        if(result!=null){
-            return result.matches(regex)
-        }
+    public fun hasValue(key: String, value: String):Boolean{
+        if(hasKey(key))
+            return parameters.filterKeys { it == key }.all { it.value == value }
         return false
     }
 
-    public fun notMatch(key: String, regex: Regex) = match(key, regex).not()
+    public fun matchValue(keyRegex: Regex, valueRegex: Regex): Boolean {
+        if (matchKey(keyRegex))
+            return parameters.filterKeys { keyRegex.containsMatchIn(it) }.all { valueRegex.containsMatchIn(it.value) }
+        return false
+    }
+
+    public fun match(key: String, regex: Regex): Boolean {
+        if(hasKey(key))
+            return parameters.filterKeys { it == key }.all { regex.containsMatchIn(it.value) }
+        return false
+    }
 
     public fun count(count: Int) = parameters.size == count
-
-    public fun matchKey(regex: Regex) = parameters.filter { it.key.matches(regex) }.isNotEmpty()
 
 }
