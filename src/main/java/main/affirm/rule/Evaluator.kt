@@ -20,6 +20,6 @@ class Evaluator {
         else throw InvalidLocationException(condition.location)
     }
 
-    
+
 
 }

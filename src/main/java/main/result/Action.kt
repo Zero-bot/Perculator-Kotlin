@@ -1,6 +1,6 @@
 package main.result
 
-enum class ActionResult {
+enum class Action {
     Allow,
     Reject,
     Redirect,

@@ -1,18 +1,15 @@
 package main.affirm.rule
 
+import main.exception.InvalidLocationException
 import main.http.Http
 import main.http.Parameters
 import javax.servlet.http.HttpServletRequest
 
 class Condition {
     var location: Byte = -1
-        get() = this.location
     var operator: Byte = -1
-        get() = this.operator
     var key: String
-        get() = this.key
     var value: String?
-        get() = this.value
 
     constructor(location: Byte, operator: Byte, key: String, value: String){
         this.location = location
@@ -28,13 +25,14 @@ class Condition {
         this.value = null
     }
 
-    fun evaluate(httpServletRequest: HttpServletRequest){
-
+    fun evaluate(httpServletRequest: HttpServletRequest): Boolean {
+        return when(this.location){
+            Http.Parameter -> evaluateParameterCondition(httpServletRequest)
+            else -> throw InvalidLocationException(this.location)
+        }
     }
 
-    private fun evaluateParameterCondition(parameters: Parameters){
-        if (this.operator == Parameters.hasKey){
-
-        }
+    private fun evaluateParameterCondition(httpServletRequest: HttpServletRequest): Boolean {
+        return Parameters(httpServletRequest).evaluate(this.operator, this.key, this.value)
     }
 }
