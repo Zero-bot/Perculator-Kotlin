@@ -24,13 +24,16 @@ class ServletTests {
         `when`(httpServletRequest.parameterMap).thenReturn(parameters as Map<*, *>?)
         var http = Http(this.httpServletRequest)
         assertTrue { http.parameters.hasKey("name") }
+
         var matchCondition = Condition(Http.Parameter, Parameters.match, "password", "\\w")
         var hasKeyCondition = Condition(Http.Parameter, Parameters.hasKey, "name")
-        var ruleSuccessCheck = Rule(arrayOf(matchCondition, hasKeyCondition), Action.Allow, Action.Reject)
+        var matchValueCondition = Condition(Http.Parameter, Parameters.matchValue, "n[am]{2}e", "^Mari\\w+\\sMaha\\w+$")
+        var ruleSuccessCheck = Rule(arrayOf(matchCondition, hasKeyCondition, matchValueCondition), Action.Allow, Action.Reject)
 
-        matchCondition.value = "\\d"
 
-        var ruleFailCheck = Rule(arrayOf(matchCondition, hasKeyCondition), Action.Allow, Action.Reject)
+        var hasPasswordCondition = Condition(Http.Parameter, Parameters.hasKey, "password")
+        var matchPasswordCondition = Condition(Http.Parameter, Parameters.matchValue, "^password$", "\\W")
+        var ruleFailCheck = Rule(arrayOf(hasPasswordCondition, matchPasswordCondition), Action.Reject, Action.Allow)
 
         assertEquals(Action.Allow, AffirmationBuilderFactory(httpServletRequest, arrayOf(ruleSuccessCheck, ruleFailCheck)).affirm())
 
