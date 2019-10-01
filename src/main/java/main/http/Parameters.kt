@@ -14,34 +14,41 @@ class Parameters(val httpServletRequest: HttpServletRequest) {
         public final val matchValue: Byte = 4
         public final val match: Byte = 5
         public final val count: Byte = 6
+        public final val hasOnlyAlphaNumberic: Byte = 7
     }
 
     private val parameters: Map<*, *>
         get() = this.httpServletRequest.parameterMap as Map<*, *>
 
-    public fun hasKey(key: String) = parameters.containsKey(key)
+    fun hasKey(key: String) = parameters.containsKey(key)
 
-    public fun matchKey(keyRegex: Regex) = parameters.filterKeys { keyRegex.containsMatchIn(it as String) }.isNotEmpty()
+    fun matchKey(keyRegex: Regex) = parameters.filterKeys { keyRegex.containsMatchIn(it as String) }.isNotEmpty()
 
-    public fun hasValue(key: String, value: String):Boolean{
+    fun hasValue(key: String, value: String):Boolean{
         if(hasKey(key))
             return parameters.filterKeys { it == key }.all { allMatch(it.value as Array<Any>, value) }
         return false
     }
 
-    public fun matchValue(keyRegex: Regex, valueRegex: Regex): Boolean {
+    fun matchValue(keyRegex: Regex, valueRegex: Regex): Boolean {
         if (matchKey(keyRegex))
             return parameters.filterKeys { keyRegex.containsMatchIn(it as String) }.all { allMatch(it.value as Array<Any>, valueRegex) }
         return false
     }
 
-    public fun match(key: String, regex: Regex): Boolean {
+    fun match(key: String, regex: Regex): Boolean {
         if(hasKey(key))
             return parameters.filterKeys { it == key }.all { allMatch(it.value as Array<Any>, regex) }
         return false
     }
 
-    public fun count(count: Int) = parameters.size == count
+    fun count(count: Int) = parameters.size == count
+
+    fun hasOnlyAlphaNumeric(key: String): Boolean{
+        if(hasKey(key))
+            return parameters.filterKeys { it == key }.all { allMatch( it.value as Array<Any>, "^[a-zA-Z0-9]+$".toRegex() ) }
+        return false
+    }
 
     private fun allMatch(value: Array<Any>, regex: Regex): Boolean {
         return value.all { regex.containsMatchIn(it as CharSequence) }
@@ -74,6 +81,10 @@ class Parameters(val httpServletRequest: HttpServletRequest) {
         if(operator == count){
             val countConverted = key.toIntOrNull() ?: throw NumberFormatException()
             return count(countConverted)
+        }
+
+        if(operator == hasOnlyAlphaNumberic){
+            return hasOnlyAlphaNumeric(key)
         }
 
         throw OperatorNotSupportedException(operator, "Parameter")
