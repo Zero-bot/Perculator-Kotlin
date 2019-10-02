@@ -1,16 +1,16 @@
-package main.http
+package http
 
 import java.util.*
 import javax.servlet.http.HttpServletRequest
 
 
 class Http(private val httpServletRequest: HttpServletRequest) {
-    val parameters:Parameters = Parameters(this.httpServletRequest)
+    val parameters: Parameters = Parameters(this.httpServletRequest)
 
     companion object{
-        final val Parameter: Byte = 0
-        final val Cookie: Byte = 1
-        final val Header: Byte = 2
+        const val Parameter: Byte = 0
+        const val Cookie: Byte = 1
+        const val Header: Byte = 2
     }
 
     init {

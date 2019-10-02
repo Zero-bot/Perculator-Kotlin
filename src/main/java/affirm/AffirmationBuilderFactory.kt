@@ -1,8 +1,7 @@
-package main.affirm
+package affirm
 
-import main.affirm.rule.Rule
-import main.result.Action
-import java.util.*
+import affirm.rule.Rule
+import result.Action
 import javax.servlet.http.HttpServletRequest
 
 class AffirmationBuilderFactory(private val httpServletRequest: HttpServletRequest, private val rules: Array<Rule>) {

@@ -1,4 +1,4 @@
-package main.result
+package result
 
 enum class Action {
     Reject,

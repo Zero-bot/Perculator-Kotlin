@@ -1,6 +1,6 @@
-package main.affirm.rule
+package affirm.rule
 
-import main.result.Action
+import result.Action
 import javax.servlet.http.HttpServletRequest
 
 class Rule(private val contextConditions: Array<Condition>?, private val conditions: Array<Condition>, private val actionSuccess: Action, private val actionFailure: Action) {

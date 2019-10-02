@@ -1,8 +1,9 @@
-package main.affirm.rule
+package affirm.rule
 
-import main.exception.InvalidLocationException
-import main.http.Http
-import main.http.Parameters
+import exception.InvalidLocationException
+import http.Cookies
+import http.Http
+import http.Parameters
 import javax.servlet.http.HttpServletRequest
 
 class Condition {
@@ -28,11 +29,16 @@ class Condition {
     fun evaluate(httpServletRequest: HttpServletRequest): Boolean {
         return when(this.location){
             Http.Parameter -> evaluateParameterCondition(httpServletRequest)
+            Http.Cookie -> evaluateCookieCondition(httpServletRequest)
             else -> throw InvalidLocationException(this.location)
         }
     }
 
     private fun evaluateParameterCondition(httpServletRequest: HttpServletRequest): Boolean {
         return Parameters(httpServletRequest).evaluate(this.operator, this.key, this.value)
+    }
+
+    private fun evaluateCookieCondition(httpServletRequest: HttpServletRequest): Boolean {
+        return Cookies(httpServletRequest).evaluate(this.operator, this.key, this.value)
     }
 }

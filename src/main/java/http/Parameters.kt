@@ -1,7 +1,7 @@
-package main.http
+package http
 
-import main.exception.OperatorNotSupportedException
-import main.exception.ValueCannotBeNullException
+import exception.OperatorNotSupportedException
+import exception.ValueCannotBeNullException
 import java.lang.NumberFormatException
 import javax.servlet.http.HttpServletRequest
 
@@ -73,7 +73,7 @@ class Parameters(val httpServletRequest: HttpServletRequest) {
             return matchValue(key.toRegex(), value.toRegex())
         }
 
-        if(operator == match ){
+        if(operator == match){
             if (value == null) throw ValueCannotBeNullException("Parameter.Match")
             return  match(key, value.toRegex())
         }
