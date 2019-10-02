@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-class ServletTests {
+class ServletParameterTests {
     lateinit var httpServletRequest: HttpServletRequest
 
     @Test
