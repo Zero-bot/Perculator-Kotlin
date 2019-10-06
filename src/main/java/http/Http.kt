@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletRequest
 
 
 class Http(private val httpServletRequest: HttpServletRequest) {
-    val parameters: Parameters = Parameters(this.httpServletRequest)
 
     companion object{
         const val Parameter: Byte = 0

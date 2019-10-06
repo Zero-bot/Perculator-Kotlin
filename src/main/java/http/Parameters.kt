@@ -8,44 +8,44 @@ import javax.servlet.http.HttpServletRequest
 class Parameters(val httpServletRequest: HttpServletRequest) {
 
     companion object {
-        public final val hasKey: Byte = 1
-        public final val matchKey: Byte = 2
-        public final val hasValue: Byte = 3
-        public final val matchValue: Byte = 4
-        public final val match: Byte = 5
-        public final val count: Byte = 6
-        public final val hasOnlyAlphaNumberic: Byte = 7
+        const val hasParameter: Byte = 1
+        const val matchParameter: Byte = 2
+        const val hasParameterWithValue: Byte = 3
+        const val matchParameterWithValue: Byte = 4
+        const val match: Byte = 5
+        const val countParameters: Byte = 6
+        const val valueHasOnlyAlphaNumericChar: Byte = 7
     }
 
     private val parameters: Map<*, *>
         get() = this.httpServletRequest.parameterMap as Map<*, *>
 
-    fun hasKey(key: String) = parameters.containsKey(key)
+    private fun hasParameter(key: String) = parameters.containsKey(key)
 
-    fun matchKey(keyRegex: Regex) = parameters.filterKeys { keyRegex.containsMatchIn(it as String) }.isNotEmpty()
+    private fun matchParameter(keyRegex: Regex) = parameters.filterKeys { keyRegex.containsMatchIn(it as String) }.isNotEmpty()
 
-    fun hasValue(key: String, value: String):Boolean{
-        if(hasKey(key))
+    private fun hasParameterWithValue(key: String, value: String):Boolean{
+        if(hasParameter(key))
             return parameters.filterKeys { it == key }.all { allMatch(it.value as Array<Any>, value) }
         return false
     }
 
-    fun matchValue(keyRegex: Regex, valueRegex: Regex): Boolean {
-        if (matchKey(keyRegex))
+    private fun matchParameterWithValue(keyRegex: Regex, valueRegex: Regex): Boolean {
+        if (matchParameter(keyRegex))
             return parameters.filterKeys { keyRegex.containsMatchIn(it as String) }.all { allMatch(it.value as Array<Any>, valueRegex) }
         return false
     }
 
-    fun match(key: String, regex: Regex): Boolean {
-        if(hasKey(key))
+    private fun match(key: String, regex: Regex): Boolean {
+        if(hasParameter(key))
             return parameters.filterKeys { it == key }.all { allMatch(it.value as Array<Any>, regex) }
         return false
     }
 
-    fun count(count: Int) = parameters.size == count
+    private fun countParameters(count: Int) = parameters.size == count
 
-    fun hasOnlyAlphaNumeric(key: String): Boolean{
-        if(hasKey(key))
+    private fun valueHasOnlyAlphaNumericChar(key: String): Boolean{
+        if(hasParameter(key))
             return parameters.filterKeys { it == key }.all { allMatch( it.value as Array<Any>, "^[a-zA-Z0-9]+$".toRegex() ) }
         return false
     }
@@ -59,18 +59,22 @@ class Parameters(val httpServletRequest: HttpServletRequest) {
     }
 
     fun evaluate(operator: Byte, key: String, value: String?): Boolean {
-        if(operator == hasKey) return hasKey(key)
-
-        if(operator == matchKey) return matchKey(key.toRegex())
-
-        if(operator == hasValue){
-            if (value == null) throw ValueCannotBeNullException("Parameter.hasValue")
-            return hasValue(key, value)
+        if(operator == hasParameter) {
+            return hasParameter(key)
         }
 
-        if(operator == matchValue){
+        if(operator == matchParameter) {
+            return matchParameter(key.toRegex())
+        }
+
+        if(operator == hasParameterWithValue){
+            if (value == null) throw ValueCannotBeNullException("Parameter.hasValue")
+            return hasParameterWithValue(key, value)
+        }
+
+        if(operator == matchParameterWithValue){
             if (value == null) throw ValueCannotBeNullException("Parameter.matchValue")
-            return matchValue(key.toRegex(), value.toRegex())
+            return matchParameterWithValue(key.toRegex(), value.toRegex())
         }
 
         if(operator == match){
@@ -78,13 +82,13 @@ class Parameters(val httpServletRequest: HttpServletRequest) {
             return  match(key, value.toRegex())
         }
 
-        if(operator == count){
+        if(operator == countParameters){
             val countConverted = key.toIntOrNull() ?: throw NumberFormatException()
-            return count(countConverted)
+            return countParameters(countConverted)
         }
 
-        if(operator == hasOnlyAlphaNumberic){
-            return hasOnlyAlphaNumeric(key)
+        if(operator == valueHasOnlyAlphaNumericChar){
+            return valueHasOnlyAlphaNumericChar(key)
         }
 
         throw OperatorNotSupportedException(operator, "Parameter")

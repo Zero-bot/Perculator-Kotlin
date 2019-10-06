@@ -12,7 +12,6 @@ import result.Action
 import javax.servlet.http.Cookie
 import javax.servlet.http.HttpServletRequest
 import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 
 class ServletCookieTests {
     lateinit var httpServletRequest: HttpServletRequest
@@ -29,12 +28,12 @@ class ServletCookieTests {
         var parameters = mutableMapOf("name" to arrayOf("Marimuthu Mahalingam"), "password" to arrayOf("password"))
         parameters["other"] = arrayOf("first", "\\//")
 
-        val hasUserNameParamCondition = Condition(Http.Parameter, Parameters.hasKey, "name")
-        val hasPasswordParamCondition = Condition(Http.Parameter, Parameters.hasKey, "password")
+        val hasUserNameParamCondition = Condition(Http.Parameter, Parameters.hasParameter, "name")
+        val hasPasswordParamCondition = Condition(Http.Parameter, Parameters.hasParameter, "password")
 
         val context = arrayOf(hasUserNameParamCondition, hasPasswordParamCondition)
 
-        val hasSessionCookieCondition = Condition(Http.Cookie, Cookies.hasKey, "SessionId")
+        val hasSessionCookieCondition = Condition(Http.Cookie, Cookies.hasCookie, "SessionId")
         val matchValueCondition = Condition(Http.Cookie, Cookies.matchValue, "SessionId","^[a-z]+$")
 
         val conditions = arrayOf(hasSessionCookieCondition, matchValueCondition)
@@ -61,16 +60,16 @@ class ServletCookieTests {
         var parameters = mutableMapOf("name" to arrayOf("Marimuthu Mahalingam"), "password" to arrayOf("password"))
         parameters["other"] = arrayOf("first", "\\//")
 
-        val hasUserNameParamCondition = Condition(Http.Parameter, Parameters.hasKey, "name")
-        val hasPasswordParamCondition = Condition(Http.Parameter, Parameters.hasKey, "password")
-        val hasRoleParamCondition = Condition(Http.Parameter, Parameters.hasKey, "role")
+        val hasUserNameParamCondition = Condition(Http.Parameter, Parameters.hasParameter, "name")
+        val hasPasswordParamCondition = Condition(Http.Parameter, Parameters.hasParameter, "password")
+        val hasRoleParamCondition = Condition(Http.Parameter, Parameters.hasParameter, "role")
 
         val context = arrayOf(hasUserNameParamCondition, hasPasswordParamCondition, hasRoleParamCondition)
 
-        val hasSessionCookieCondition = Condition(Http.Cookie, Cookies.hasKey, "SessionId")
+        val hasSessionCookieCondition = Condition(Http.Cookie, Cookies.hasCookie, "SessionId")
         val matchValueCondition = Condition(Http.Cookie, Cookies.matchValue, "SessionId","^[a-z]+$")
-        val hasValueCondition = Condition(Http.Cookie, Cookies.hasValue, "role", "admin")
-        val sessionHasOnlyAlphanumericCondition = Condition(Http.Cookie, Cookies.hasOnlyAlphaNumericChar, "SessionId")
+        val hasValueCondition = Condition(Http.Cookie, Cookies.cookieHasValue, "role", "admin")
+        val sessionHasOnlyAlphanumericCondition = Condition(Http.Cookie, Cookies.valueHasOnlyAlphaNumericChar, "SessionId")
 
         val conditions = arrayOf(hasSessionCookieCondition, matchValueCondition, hasValueCondition, sessionHasOnlyAlphanumericCondition)
 
@@ -95,16 +94,16 @@ class ServletCookieTests {
         var parameters = mutableMapOf("name" to arrayOf("Marimuthu Mahalingam"), "password" to arrayOf("password"))
         parameters["other"] = arrayOf("first", "\\//")
 
-        val hasUserNameParamCondition = Condition(Http.Parameter, Parameters.hasKey, "name")
-        val hasPasswordParamCondition = Condition(Http.Parameter, Parameters.hasKey, "password")
-        val hasRoleParamCondition = Condition(Http.Cookie, Cookies.hasKey, "role")
+        val hasUserNameParamCondition = Condition(Http.Parameter, Parameters.hasParameter, "name")
+        val hasPasswordParamCondition = Condition(Http.Parameter, Parameters.hasParameter, "password")
+        val hasRoleParamCondition = Condition(Http.Cookie, Cookies.hasCookie, "role")
 
         val context = arrayOf(hasUserNameParamCondition, hasPasswordParamCondition, hasRoleParamCondition)
 
-        val hasSessionCookieCondition = Condition(Http.Cookie, Cookies.hasKey, "SessionId")
+        val hasSessionCookieCondition = Condition(Http.Cookie, Cookies.hasCookie, "SessionId")
         val matchValueCondition = Condition(Http.Cookie, Cookies.matchValue, "SessionId","^[a-z]+$")
-        val hasValueCondition = Condition(Http.Cookie, Cookies.hasValue, "role", "admin")
-        val sessionHasOnlyAlphanumericCondition = Condition(Http.Cookie, Cookies.hasOnlyAlphaNumericChar, "SessionId")
+        val hasValueCondition = Condition(Http.Cookie, Cookies.cookieHasValue, "role", "admin")
+        val sessionHasOnlyAlphanumericCondition = Condition(Http.Cookie, Cookies.valueHasOnlyAlphaNumericChar, "SessionId")
 
         val conditions = arrayOf(hasSessionCookieCondition, matchValueCondition, hasValueCondition, sessionHasOnlyAlphanumericCondition)
 
@@ -129,16 +128,16 @@ class ServletCookieTests {
         var parameters = mutableMapOf("name" to arrayOf("Marimuthu Mahalingam"), "password" to arrayOf("password"))
         parameters["other"] = arrayOf("first", "\\//")
 
-        val hasUserNameParamCondition = Condition(Http.Parameter, Parameters.hasKey, "name")
-        val hasPasswordParamCondition = Condition(Http.Parameter, Parameters.hasKey, "password")
-        val hasRoleParamCondition = Condition(Http.Cookie, Cookies.hasKey, "role")
+        val hasUserNameParamCondition = Condition(Http.Parameter, Parameters.hasParameter, "name")
+        val hasPasswordParamCondition = Condition(Http.Parameter, Parameters.hasParameter, "password")
+        val hasRoleParamCondition = Condition(Http.Cookie, Cookies.hasCookie, "role")
 
         val context = arrayOf(hasUserNameParamCondition, hasPasswordParamCondition, hasRoleParamCondition)
 
-        val hasSessionCookieCondition = Condition(Http.Cookie, Cookies.count, "2")
+        val hasSessionCookieCondition = Condition(Http.Cookie, Cookies.countCookies, "2")
         val matchValueCondition = Condition(Http.Cookie, Cookies.matchValue, "SessionId","^[a-z]+$")
-        val hasValueCondition = Condition(Http.Cookie, Cookies.hasValue, "role", "admin")
-        val sessionHasOnlyAlphanumericCondition = Condition(Http.Cookie, Cookies.hasOnlyAlphaNumericChar, "SessionId")
+        val hasValueCondition = Condition(Http.Cookie, Cookies.cookieHasValue, "role", "admin")
+        val sessionHasOnlyAlphanumericCondition = Condition(Http.Cookie, Cookies.valueHasOnlyAlphaNumericChar, "SessionId")
 
         val conditions = arrayOf(hasSessionCookieCondition, matchValueCondition, hasValueCondition, sessionHasOnlyAlphanumericCondition)
 
@@ -164,16 +163,16 @@ class ServletCookieTests {
         var parameters = mutableMapOf("name" to arrayOf("Marimuthu Mahalingam"), "password" to arrayOf("password"))
         parameters["other"] = arrayOf("first", "\\//")
 
-        val hasUserNameParamCondition = Condition(Http.Parameter, Parameters.hasKey, "name")
-        val hasPasswordParamCondition = Condition(Http.Parameter, Parameters.hasKey, "password")
-        val hasRoleParamCondition = Condition(Http.Cookie, Cookies.hasKey, "role")
+        val hasUserNameParamCondition = Condition(Http.Parameter, Parameters.hasParameter, "name")
+        val hasPasswordParamCondition = Condition(Http.Parameter, Parameters.hasParameter, "password")
+        val hasRoleParamCondition = Condition(Http.Cookie, Cookies.hasCookie, "role")
 
         val context = arrayOf(hasUserNameParamCondition, hasPasswordParamCondition, hasRoleParamCondition)
 
-        val hasSessionCookieCondition = Condition(Http.Cookie, Cookies.count, "2")
+        val hasSessionCookieCondition = Condition(Http.Cookie, Cookies.countCookies, "2")
         val matchValueCondition = Condition(Http.Cookie, Cookies.matchValue, "SessionId","^[a-z]+$")
-        val hasValueCondition = Condition(Http.Cookie, Cookies.hasValue, "role", "admin")
-        val sessionHasOnlyAlphanumericCondition = Condition(Http.Cookie, Cookies.hasOnlyAlphaNumericChar, "SessionId")
+        val hasValueCondition = Condition(Http.Cookie, Cookies.cookieHasValue, "role", "admin")
+        val sessionHasOnlyAlphanumericCondition = Condition(Http.Cookie, Cookies.valueHasOnlyAlphaNumericChar, "SessionId")
 
         val conditions = arrayOf(hasSessionCookieCondition, matchValueCondition, hasValueCondition, sessionHasOnlyAlphanumericCondition)
 

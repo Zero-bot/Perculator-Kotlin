@@ -11,7 +11,6 @@ import org.mockito.Mockito
 import org.mockito.Mockito.`when`
 import javax.servlet.http.HttpServletRequest
 import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 
 class ServletParameterTests {
     lateinit var httpServletRequest: HttpServletRequest
@@ -22,15 +21,13 @@ class ServletParameterTests {
         val parameters = mutableMapOf("name" to arrayOf("Marimuthu Mahalingam"), "password" to arrayOf("password"))
         parameters["other"] = arrayOf("first", "\\//")
         `when`(httpServletRequest.parameterMap).thenReturn(parameters as Map<*, *>?)
-        var http = Http(this.httpServletRequest)
-        assertTrue { http.parameters.hasKey("name") }
 
-        var contextCondition = Condition(Http.Parameter, Parameters.hasKey, "password")
+        var contextCondition = Condition(Http.Parameter, Parameters.hasParameter, "password")
 
         var matchCondition = Condition(Http.Parameter, Parameters.match, "password", "\\w")
-        var hasKeyCondition = Condition(Http.Parameter, Parameters.hasKey, "name")
+        var hasKeyCondition = Condition(Http.Parameter, Parameters.hasParameter, "name")
         var matchValueCondition =
-            Condition(Http.Parameter, Parameters.matchValue, "n[am]{2}e", "^Mari\\w+\\sMaha\\w+$")
+            Condition(Http.Parameter, Parameters.matchParameterWithValue, "n[am]{2}e", "^Mari\\w+\\sMaha\\w+$")
         var ruleSuccessCheck = Rule(
             arrayOf(contextCondition),
             arrayOf(matchCondition, hasKeyCondition, matchValueCondition),
@@ -39,9 +36,9 @@ class ServletParameterTests {
         )
 
 
-        var hasPasswordCondition = Condition(Http.Parameter, Parameters.hasKey, "password")
+        var hasPasswordCondition = Condition(Http.Parameter, Parameters.hasParameter, "password")
         var matchPasswordCondition =
-            Condition(Http.Parameter, Parameters.matchValue, "^password$", "\\W")
+            Condition(Http.Parameter, Parameters.matchParameterWithValue, "^password$", "\\W")
         var ruleFailCheck = Rule(
             arrayOf(contextCondition),
             arrayOf(hasPasswordCondition, matchPasswordCondition),
@@ -50,7 +47,7 @@ class ServletParameterTests {
         )
 
         var hasAlphanumericCondition =
-            Condition(Http.Parameter, Parameters.hasOnlyAlphaNumberic, "password")
+            Condition(Http.Parameter, Parameters.valueHasOnlyAlphaNumericChar, "password")
         var ruleAlphanumericCheck = Rule(
             arrayOf(contextCondition),
             arrayOf(hasAlphanumericCondition),
@@ -59,7 +56,7 @@ class ServletParameterTests {
         )
 
         var hasAlphanumericConditionFail =
-            Condition(Http.Parameter, Parameters.hasOnlyAlphaNumberic, "other")
+            Condition(Http.Parameter, Parameters.valueHasOnlyAlphaNumericChar, "other")
         var ruleAlphanumericFailCheck = Rule(
             arrayOf(contextCondition),
             arrayOf(hasAlphanumericConditionFail),
@@ -84,16 +81,14 @@ class ServletParameterTests {
         var parameters = mutableMapOf("name" to arrayOf("Marimuthu Mahalingam"), "password" to arrayOf("password"))
         parameters["other"] = arrayOf("first", "\\//")
         `when`(httpServletRequest.parameterMap).thenReturn(parameters as Map<*, *>?)
-        var http = Http(this.httpServletRequest)
-        assertTrue { http.parameters.hasKey("name") }
 
-        var contextConditionFail = Condition(Http.Parameter, Parameters.hasKey, "passwords")
-        var contextCondition = Condition(Http.Parameter, Parameters.hasKey, "password")
+        var contextConditionFail = Condition(Http.Parameter, Parameters.hasParameter, "passwords")
+        var contextCondition = Condition(Http.Parameter, Parameters.hasParameter, "password")
 
         var matchCondition = Condition(Http.Parameter, Parameters.match, "password", "\\w")
-        var hasKeyCondition = Condition(Http.Parameter, Parameters.hasKey, "name")
+        var hasKeyCondition = Condition(Http.Parameter, Parameters.hasParameter, "name")
         var matchValueCondition =
-            Condition(Http.Parameter, Parameters.matchValue, "n[am]{2}e", "^Mari\\w+\\sMaha\\w+$")
+            Condition(Http.Parameter, Parameters.matchParameterWithValue, "n[am]{2}e", "^Mari\\w+\\sMaha\\w+$")
         var ruleSuccessCheck = Rule(
             arrayOf(contextCondition),
             arrayOf(matchCondition, hasKeyCondition, matchValueCondition),
@@ -102,9 +97,9 @@ class ServletParameterTests {
         )
 
 
-        var hasPasswordCondition = Condition(Http.Parameter, Parameters.hasKey, "password")
+        var hasPasswordCondition = Condition(Http.Parameter, Parameters.hasParameter, "password")
         var matchPasswordCondition =
-            Condition(Http.Parameter, Parameters.matchValue, "^password$", "\\W")
+            Condition(Http.Parameter, Parameters.matchParameterWithValue, "^password$", "\\W")
         var ruleFailCheck = Rule(
             arrayOf(contextCondition),
             arrayOf(hasPasswordCondition, matchPasswordCondition),
@@ -113,7 +108,7 @@ class ServletParameterTests {
         )
 
         var hasAlphanumericCondition =
-            Condition(Http.Parameter, Parameters.hasOnlyAlphaNumberic, "password")
+            Condition(Http.Parameter, Parameters.valueHasOnlyAlphaNumericChar, "password")
         var ruleAlphanumericCheck = Rule(
             arrayOf(contextCondition),
             arrayOf(hasAlphanumericCondition),
@@ -122,7 +117,7 @@ class ServletParameterTests {
         )
 
         var hasAlphanumericConditionFail =
-            Condition(Http.Parameter, Parameters.hasOnlyAlphaNumberic, "other")
+            Condition(Http.Parameter, Parameters.valueHasOnlyAlphaNumericChar, "other")
         var ruleAlphanumericFailCheck = Rule(
             arrayOf(contextConditionFail),
             arrayOf(hasAlphanumericConditionFail),
@@ -147,16 +142,14 @@ class ServletParameterTests {
         var parameters = mutableMapOf("name" to arrayOf("Marimuthu Mahalingam"), "password" to arrayOf("&^%$"))
         parameters["other"] = arrayOf("first", "\\//")
         `when`(httpServletRequest.parameterMap).thenReturn(parameters as Map<*, *>?)
-        var http = Http(this.httpServletRequest)
-        assertTrue { http.parameters.hasKey("name") }
 
-        var contextConditionFail = Condition(Http.Parameter, Parameters.hasKey, "passwords")
-        var contextCondition = Condition(Http.Parameter, Parameters.hasKey, "password")
+        var contextConditionFail = Condition(Http.Parameter, Parameters.hasParameter, "passwords")
+        var contextCondition = Condition(Http.Parameter, Parameters.hasParameter, "password")
 
         var matchCondition = Condition(Http.Parameter, Parameters.match, "password", "\\w")
-        var hasKeyCondition = Condition(Http.Parameter, Parameters.hasKey, "name")
+        var hasKeyCondition = Condition(Http.Parameter, Parameters.hasParameter, "name")
         var matchValueCondition =
-            Condition(Http.Parameter, Parameters.matchValue, "n[am]{2}e", "^Mari\\w+\\sMaha\\w+$")
+            Condition(Http.Parameter, Parameters.matchParameterWithValue, "n[am]{2}e", "^Mari\\w+\\sMaha\\w+$")
         var ruleSuccessCheck = Rule(
             arrayOf(contextCondition),
             arrayOf(matchCondition, hasKeyCondition, matchValueCondition),
@@ -165,9 +158,9 @@ class ServletParameterTests {
         )
 
 
-        var hasPasswordCondition = Condition(Http.Parameter, Parameters.hasKey, "password")
+        var hasPasswordCondition = Condition(Http.Parameter, Parameters.hasParameter, "password")
         var matchPasswordCondition =
-            Condition(Http.Parameter, Parameters.matchValue, "^password$", "\\W")
+            Condition(Http.Parameter, Parameters.matchParameterWithValue, "^password$", "\\W")
         var ruleFailCheck = Rule(
             arrayOf(contextCondition),
             arrayOf(hasPasswordCondition, matchPasswordCondition),
@@ -176,7 +169,7 @@ class ServletParameterTests {
         )
 
         var hasAlphanumericCondition =
-            Condition(Http.Parameter, Parameters.hasOnlyAlphaNumberic, "password")
+            Condition(Http.Parameter, Parameters.valueHasOnlyAlphaNumericChar, "password")
         var ruleAlphanumericCheck = Rule(
             arrayOf(contextCondition),
             arrayOf(hasAlphanumericCondition),
@@ -185,7 +178,7 @@ class ServletParameterTests {
         )
 
         var hasAlphanumericConditionFail =
-            Condition(Http.Parameter, Parameters.hasOnlyAlphaNumberic, "other")
+            Condition(Http.Parameter, Parameters.valueHasOnlyAlphaNumericChar, "other")
         var ruleAlphanumericFailCheck = Rule(
             arrayOf(contextConditionFail),
             arrayOf(hasAlphanumericConditionFail),
