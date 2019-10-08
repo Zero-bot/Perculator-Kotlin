@@ -19,7 +19,7 @@ class Headers(val httpServletRequest: HttpServletRequest) {
         const val matchAllHeadersValue:Byte = 8
     }
 
-    private fun hasHeader(key: String) = httpServletRequest.headerNames.toList().any { it == key }
+    private fun hasHeader(key: String) = httpServletRequest.headerNames.toList().any { it.toString().equals(key, true) }
 
     private fun headerHasValue(key: String, value: String) = httpServletRequest.getHeaders(key).asSequence().any { it == value }
 
@@ -61,7 +61,7 @@ class Headers(val httpServletRequest: HttpServletRequest) {
         }
 
         if(operator == matchHeader){
-            return matchHeader(key.toRegex())
+            return matchHeader(key.toRegex(RegexOption.IGNORE_CASE))
         }
 
         if(operator == matchHeaderValue){
