@@ -92,7 +92,7 @@ class Request(httpServletRequest: HttpServletRequest) {
     private fun uriContains(key: String) = uri.contains(key)
     private fun uriNotContains(key: String) = !uri.contains(key)
     private fun uriMatch(regex: Regex) = regex.containsMatchIn(uri)
-    private fun uriNotMatch(regex: Regex) = regex.containsMatchIn(uri)
+    private fun uriNotMatch(regex: Regex) = !regex.containsMatchIn(uri)
     
     private fun schemeEquals(key: String) = key == scheme
     private fun schemeNotEquals(key: String) = key != scheme
@@ -100,7 +100,7 @@ class Request(httpServletRequest: HttpServletRequest) {
     private fun protocolEquals(key: String) = protocol == key
     private fun protocolNotEquals(key: String) = protocol != key
     private fun protocolMatch(regex: Regex) = regex.containsMatchIn(protocol)
-    private fun protocolNotMatch(regex: Regex) = regex.containsMatchIn(protocol)
+    private fun protocolNotMatch(regex: Regex) = !regex.containsMatchIn(protocol)
     
     private fun urlEquals(key: String) = url == key
     private fun urlNotEquals(key: String) = url != key
@@ -112,7 +112,7 @@ class Request(httpServletRequest: HttpServletRequest) {
     private fun serverEquals(key: String) = server == key
     private fun serverNotEquals(key: String) = server != key
     private fun serverMatch(regex: Regex) = regex.containsMatchIn(server)
-    private fun serverNotMatch(regex: Regex) = regex.containsMatchIn(server)
+    private fun serverNotMatch(regex: Regex) = !regex.containsMatchIn(server)
 
     private fun portEquals(key: Int) = key == port
     private fun portNotEquals(key: Int) = key != port
@@ -131,12 +131,43 @@ class Request(httpServletRequest: HttpServletRequest) {
             isOptionsRequest -> isOptionsRequest()
             isTraceRequest -> isTraceRequest()
             isPatchRequest -> isPatchRequest()
+
             queryStringEquals -> if (key != null ) queryStringEquals(key) else throw KeyCannotBeNullException("Request.queryStringEquals")
             queryStringNotEquals -> if (key != null ) queryStringNotEquals(key) else throw KeyCannotBeNullException("Request.queryStringNotEquals")
             queryStringContains -> if (key != null ) queryStringContains(key) else throw KeyCannotBeNullException("Request.queryStringContains")
             queryStringNotContains -> if (key != null ) queryStringNotContains(key) else throw KeyCannotBeNullException("Request.queryStringNotContains")
             queryStringMatch -> if (key != null ) queryStringMatch(key.toRegex()) else throw KeyCannotBeNullException("Request.queryStringMatch")
             queryStringNotMatch -> if (key != null ) queryStringNotMatch(key.toRegex()) else throw KeyCannotBeNullException("Request.queryStringMatch")
+
+            uriEquals -> if (key!=null ) uriEquals(key) else throw KeyCannotBeNullException("Request.uriEquals")
+            uriNotEquals -> if (key!=null ) uriNotEquals(key) else throw KeyCannotBeNullException("Request.uriNotEquals")
+            uriContains -> if (key!=null ) uriContains(key) else throw KeyCannotBeNullException("Request.uriContains")
+            uriNotContains -> if (key!=null ) uriNotContains(key) else throw KeyCannotBeNullException("Request.uriNotContains")
+            uriMatch -> if (key!=null ) uriMatch(key.toRegex()) else throw KeyCannotBeNullException("Request.uriMatch")
+            uriNotMatch -> if (key!=null ) uriNotMatch(key.toRegex()) else throw KeyCannotBeNullException("Request.uriNotMatch")
+
+            schemeEquals -> if (key!=null ) schemeEquals(key) else throw KeyCannotBeNullException("Request.schemeEquals")
+            schemeNotEquals -> if (key!=null ) schemeNotEquals(key) else throw KeyCannotBeNullException("Request.schemeNotEquals")
+
+            protocolEquals -> if (key!=null ) protocolEquals(key) else throw KeyCannotBeNullException("Request.protocolEquals")
+            protocolNotEquals -> if (key!=null ) protocolNotEquals(key) else throw KeyCannotBeNullException("Request.protocolNotEquals")
+            protocolMatch -> if (key!=null ) protocolMatch(key.toRegex()) else throw KeyCannotBeNullException("Request.protocolMatch")
+            protocolNotMatch -> if (key!=null ) protocolNotMatch(key.toRegex()) else throw KeyCannotBeNullException("Request.protocolNotMatch")
+
+            urlEquals -> if (key!=null ) urlEquals(key) else throw KeyCannotBeNullException("Request.urlEquals")
+            urlNotEquals -> if (key!=null ) urlNotEquals(key) else throw KeyCannotBeNullException("Request.urlNotEquals")
+            urlMatch -> if (key!=null ) urlMatch(key.toRegex()) else throw KeyCannotBeNullException("Request.urlMatch")
+            urlNotMatch -> if (key!=null ) urlNotMatch(key.toRegex()) else throw KeyCannotBeNullException("Request.urlNotMatch")
+            urlContains -> if (key!=null ) urlContains(key) else throw KeyCannotBeNullException("Request.urlContains")
+            urlNotContains -> if (key!=null ) urlNotContains(key) else throw KeyCannotBeNullException("Request.urlNotContains")
+
+            serverEquals -> if (key!=null ) serverEquals(key) else throw KeyCannotBeNullException("Request.serverEquals")
+            serverNotEquals -> if (key!=null ) serverNotEquals(key) else throw KeyCannotBeNullException("Request.serverNotEquals")
+            serverMatch -> if (key!=null ) serverMatch(key.toRegex()) else throw KeyCannotBeNullException("Request.serverMatch")
+            serverNotMatch -> if (key!=null ) serverNotMatch(key.toRegex()) else throw KeyCannotBeNullException("Request.serverNotMatch")
+
+            portEquals -> if (key!=null ) portEquals(key.toInt()) else throw KeyCannotBeNullException("Request.portEquals")
+            portNotEquals -> if (key!=null ) portNotEquals(key.toInt()) else throw KeyCannotBeNullException("Request.portNotEquals")
             else -> throw OperatorNotSupportedException(operator, "Request")
         }
     }

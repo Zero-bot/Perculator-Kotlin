@@ -1,5 +1,6 @@
 package http
 
+import exception.KeyCannotBeNullException
 import exception.OperatorNotSupportedException
 import exception.ValueCannotBeNullException
 import java.lang.NumberFormatException
@@ -58,39 +59,42 @@ class Parameters(val httpServletRequest: HttpServletRequest) {
         return value.all { match == (it as CharSequence) }
     }
 
-    fun evaluate(operator: Byte, key: String, value: String?): Boolean {
-        if(operator == hasParameter) {
-            return hasParameter(key)
-        }
+    fun evaluate(operator: Byte, key: String?, value: String?): Boolean {
+        if (key != null) {
+            if (operator == hasParameter) {
+                return hasParameter(key)
+            }
 
-        if(operator == matchParameter) {
-            return matchParameter(key.toRegex())
-        }
+            if (operator == matchParameter) {
+                return matchParameter(key.toRegex())
+            }
 
-        if(operator == hasParameterWithValue){
-            if (value == null) throw ValueCannotBeNullException("Parameter.hasValue")
-            return hasParameterWithValue(key, value)
-        }
+            if (operator == hasParameterWithValue) {
+                if (value == null) throw ValueCannotBeNullException("Parameter.hasValue")
+                return hasParameterWithValue(key, value)
+            }
 
-        if(operator == matchParameterWithValue){
-            if (value == null) throw ValueCannotBeNullException("Parameter.matchValue")
-            return matchParameterWithValue(key.toRegex(), value.toRegex())
-        }
+            if (operator == matchParameterWithValue) {
+                if (value == null) throw ValueCannotBeNullException("Parameter.matchValue")
+                return matchParameterWithValue(key.toRegex(), value.toRegex())
+            }
 
-        if(operator == match){
-            if (value == null) throw ValueCannotBeNullException("Parameter.Match")
-            return  match(key, value.toRegex())
-        }
+            if (operator == match) {
+                if (value == null) throw ValueCannotBeNullException("Parameter.Match")
+                return match(key, value.toRegex())
+            }
 
-        if(operator == countParameters){
-            val countConverted = key.toIntOrNull() ?: throw NumberFormatException()
-            return countParameters(countConverted)
-        }
+            if (operator == countParameters) {
+                val countConverted = key.toIntOrNull() ?: throw NumberFormatException()
+                return countParameters(countConverted)
+            }
 
-        if(operator == valueHasOnlyAlphaNumericChar){
-            return valueHasOnlyAlphaNumericChar(key)
-        }
+            if (operator == valueHasOnlyAlphaNumericChar) {
+                return valueHasOnlyAlphaNumericChar(key)
+            }
 
-        throw OperatorNotSupportedException(operator, "Parameter")
+            throw OperatorNotSupportedException(operator, "Parameter")
+        }
+        throw KeyCannotBeNullException("Parameter conditions")
     }
 }

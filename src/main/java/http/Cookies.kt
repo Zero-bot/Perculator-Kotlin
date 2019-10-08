@@ -1,5 +1,6 @@
 package http
 
+import exception.KeyCannotBeNullException
 import exception.OperatorNotSupportedException
 import exception.ValueCannotBeNullException
 import javax.servlet.http.Cookie
@@ -32,30 +33,31 @@ class Cookies(httpServletRequest: HttpServletRequest) {
 
     private fun valueLengthEquals(key: String, length: Int) = this.parameters.any { it.name == key && it.value.length == length }
 
-    fun evaluate(operator: Byte, key: String, value: String?): Boolean {
-        if(operator == hasCookie) return hasCookie(key)
+    fun evaluate(operator: Byte, key: String?, value: String?): Boolean {
+        if (key != null) {
+            if (operator == hasCookie) return hasCookie(key)
 
-        if(operator == matchCookie) return matchCookie(key.toRegex())
+            if (operator == matchCookie) return matchCookie(key.toRegex())
 
-        if(operator == cookieHasValue) {
-            if(value == null) throw ValueCannotBeNullException("hasValue")
-            return cookieHasValue(key, value)
+            if (operator == cookieHasValue) {
+                if (value == null) throw ValueCannotBeNullException("hasValue")
+                return cookieHasValue(key, value)
+            }
+
+            if (operator == matchValue) {
+                if (value == null) throw ValueCannotBeNullException("matchValue")
+                return matchValue(key, value.toRegex())
+            }
+
+            if (operator == countCookies) return countCookies(key.toInt())
+
+            if (operator == valueHasOnlyAlphaNumericChar) return valueHasOnlyAlphaNumericChar(key)
+
+            if (operator == valueLengthEquals) {
+                if (value == null) throw ValueCannotBeNullException("valueLengthEquals")
+                return valueLengthEquals(key, value.toInt())
+            } else throw OperatorNotSupportedException(operator, "Cookie")
         }
-
-        if(operator == matchValue){
-            if(value == null) throw ValueCannotBeNullException("matchValue")
-            return matchValue(key, value.toRegex())
-        }
-
-        if(operator == countCookies) return countCookies(key.toInt())
-
-        if(operator == valueHasOnlyAlphaNumericChar) return valueHasOnlyAlphaNumericChar(key)
-
-        if(operator == valueLengthEquals){
-            if(value == null) throw ValueCannotBeNullException("valueLengthEquals")
-            return valueLengthEquals(key, value.toInt())
-        }
-
-        else throw OperatorNotSupportedException(operator, "Cookie")
+        else throw KeyCannotBeNullException("Cookie conditions")
     }
 }
