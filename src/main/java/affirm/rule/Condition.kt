@@ -3,8 +3,10 @@ package affirm.rule
 import exception.InvalidLocationException
 import exception.KeyCannotBeNullException
 import http.*
+import kotlinx.serialization.Serializable
 import javax.servlet.http.HttpServletRequest
 
+@Serializable
 class Condition {
     var location: Byte = -1
     var operator: Byte = -1

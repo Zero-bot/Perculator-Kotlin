@@ -1,0 +1,27 @@
+{
+  "Rules": {
+    "checkParameter": {
+      "conditions": [
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.hasParameter",
+          "key": "name"
+        },
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.hasParameter",
+          "key": "password"
+        },
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.hasParameter",
+          "key": "notAParameter"
+        }
+      ],
+      "action": {
+        "success": "Allow",
+        "failure": "Reject"
+      }
+    }
+  }
+}

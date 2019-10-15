@@ -1,0 +1,72 @@
+{
+  "Rules": {
+    "checkCookie": {
+      "context": [
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.hasParameter",
+          "key": "password",
+          "value": null
+        },
+        {
+          "location": "Http.Cookie",
+          "operator": "Cookie.match",
+          "key": "sessionId",
+          "value": "[\\d++]"
+        }
+      ],
+      "conditions": [
+        {
+          "location": "Http.Cookie",
+          "operator": "Cookie.match",
+          "key": "sessionId",
+          "value": "[\\d++]"
+        },
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.hasParameter",
+          "key": "password",
+          "value": null
+        }
+      ],
+      "action": {
+        "success": "Allow",
+        "failure": "Reject"
+      }
+    },
+    "another": {
+      "context": [
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.hasParameter",
+          "key": "password",
+          "value": null
+        },
+        {
+          "location": "Http.Cookie",
+          "operator": "Cookie.match",
+          "key": "sessionId",
+          "value": "[\\d++]"
+        }
+      ],
+      "conditions": [
+        {
+          "location": "Http.Cookie",
+          "operator": "Cookie.match",
+          "key": "sessionId",
+          "value": "[\\d++]"
+        },
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.hasParameter",
+          "key": "password",
+          "value": null
+        }
+      ],
+      "action": {
+        "success": "Allow",
+        "failure": "Reject"
+      }
+    }
+  }
+}

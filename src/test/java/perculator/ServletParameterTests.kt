@@ -3,24 +3,18 @@ package perculator
 import affirm.AffirmationBuilderFactory
 import affirm.rule.Condition
 import affirm.rule.Rule
+import helpers.TestSuccessHelpers
 import http.Http
 import http.Parameters
 import result.Action
 import org.junit.jupiter.api.Test
-import org.mockito.Mockito
-import org.mockito.Mockito.`when`
-import javax.servlet.http.HttpServletRequest
 import kotlin.test.assertEquals
 
 class ServletParameterTests {
-    lateinit var httpServletRequest: HttpServletRequest
 
     @Test
     fun testHttpParametersOperations(){
-        this.httpServletRequest = Mockito.mock(HttpServletRequest::class.java)
-        val parameters = mutableMapOf("name" to arrayOf("Marimuthu Mahalingam"), "password" to arrayOf("password"))
-        parameters["other"] = arrayOf("first", "\\//")
-        `when`(httpServletRequest.parameterMap).thenReturn(parameters as Map<*, *>?)
+        val httpServletRequest = TestSuccessHelpers().httpServletRequest
 
         var contextCondition = Condition(Http.Parameter, Parameters.hasParameter, "password")
 
@@ -29,8 +23,8 @@ class ServletParameterTests {
         var matchValueCondition =
             Condition(Http.Parameter, Parameters.matchParameterWithValue, "n[am]{2}e", "^Mari\\w+\\sMaha\\w+$")
         var ruleSuccessCheck = Rule(
-            arrayOf(contextCondition),
-            arrayOf(matchCondition, hasKeyCondition, matchValueCondition),
+            listOf(contextCondition),
+            listOf(matchCondition, hasKeyCondition, matchValueCondition),
             Action.Allow,
             Action.Reject
         )
@@ -40,8 +34,8 @@ class ServletParameterTests {
         var matchPasswordCondition =
             Condition(Http.Parameter, Parameters.matchParameterWithValue, "^password$", "\\W")
         var ruleFailCheck = Rule(
-            arrayOf(contextCondition),
-            arrayOf(hasPasswordCondition, matchPasswordCondition),
+            listOf(contextCondition),
+            listOf(hasPasswordCondition, matchPasswordCondition),
             Action.Reject,
             Action.Allow
         )
@@ -49,8 +43,8 @@ class ServletParameterTests {
         var hasAlphanumericCondition =
             Condition(Http.Parameter, Parameters.valueHasOnlyAlphaNumericChar, "password")
         var ruleAlphanumericCheck = Rule(
-            arrayOf(contextCondition),
-            arrayOf(hasAlphanumericCondition),
+            listOf(contextCondition),
+            listOf(hasAlphanumericCondition),
             Action.Allow,
             Action.Reject
         )
@@ -58,17 +52,17 @@ class ServletParameterTests {
         var hasAlphanumericConditionFail =
             Condition(Http.Parameter, Parameters.valueHasOnlyAlphaNumericChar, "other")
         var ruleAlphanumericFailCheck = Rule(
-            arrayOf(contextCondition),
-            arrayOf(hasAlphanumericConditionFail),
+            listOf(contextCondition),
+            listOf(hasAlphanumericConditionFail),
             Action.Reject,
             Action.Allow
         )
 
-        val rules = arrayOf(
-            ruleSuccessCheck,
-            ruleFailCheck,
-            ruleAlphanumericCheck,
-            ruleAlphanumericFailCheck
+        val rules = mapOf(
+            "ruleSuccessCheck" to ruleSuccessCheck,
+            "ruleFailCheck" to ruleFailCheck,
+            "ruleAlphanumericCheck" to ruleAlphanumericCheck,
+            "ruleAlphanumericFailCheck" to ruleAlphanumericFailCheck
         )
 
         assertEquals(Action.Allow, AffirmationBuilderFactory(httpServletRequest, rules).affirm())
@@ -77,10 +71,7 @@ class ServletParameterTests {
 
     @Test
     fun testContextFailHttpParametersOperations(){
-        this.httpServletRequest = Mockito.mock(HttpServletRequest::class.java)
-        var parameters = mutableMapOf("name" to arrayOf("Marimuthu Mahalingam"), "password" to arrayOf("password"))
-        parameters["other"] = arrayOf("first", "\\//")
-        `when`(httpServletRequest.parameterMap).thenReturn(parameters as Map<*, *>?)
+        val httpServletRequest = TestSuccessHelpers().httpServletRequest
 
         var contextConditionFail = Condition(Http.Parameter, Parameters.hasParameter, "passwords")
         var contextCondition = Condition(Http.Parameter, Parameters.hasParameter, "password")
@@ -90,8 +81,8 @@ class ServletParameterTests {
         var matchValueCondition =
             Condition(Http.Parameter, Parameters.matchParameterWithValue, "n[am]{2}e", "^Mari\\w+\\sMaha\\w+$")
         var ruleSuccessCheck = Rule(
-            arrayOf(contextCondition),
-            arrayOf(matchCondition, hasKeyCondition, matchValueCondition),
+            listOf(contextCondition),
+            listOf(matchCondition, hasKeyCondition, matchValueCondition),
             Action.Allow,
             Action.Reject
         )
@@ -101,8 +92,8 @@ class ServletParameterTests {
         var matchPasswordCondition =
             Condition(Http.Parameter, Parameters.matchParameterWithValue, "^password$", "\\W")
         var ruleFailCheck = Rule(
-            arrayOf(contextCondition),
-            arrayOf(hasPasswordCondition, matchPasswordCondition),
+            listOf(contextCondition),
+            listOf(hasPasswordCondition, matchPasswordCondition),
             Action.Reject,
             Action.Allow
         )
@@ -110,8 +101,8 @@ class ServletParameterTests {
         var hasAlphanumericCondition =
             Condition(Http.Parameter, Parameters.valueHasOnlyAlphaNumericChar, "password")
         var ruleAlphanumericCheck = Rule(
-            arrayOf(contextCondition),
-            arrayOf(hasAlphanumericCondition),
+            listOf(contextCondition),
+            listOf(hasAlphanumericCondition),
             Action.Allow,
             Action.Reject
         )
@@ -119,17 +110,17 @@ class ServletParameterTests {
         var hasAlphanumericConditionFail =
             Condition(Http.Parameter, Parameters.valueHasOnlyAlphaNumericChar, "other")
         var ruleAlphanumericFailCheck = Rule(
-            arrayOf(contextConditionFail),
-            arrayOf(hasAlphanumericConditionFail),
+            listOf(contextConditionFail),
+            listOf(hasAlphanumericConditionFail),
             Action.Reject,
             Action.Allow
         )
 
-        val rules = arrayOf(
-            ruleSuccessCheck,
-            ruleFailCheck,
-            ruleAlphanumericCheck,
-            ruleAlphanumericFailCheck
+        val rules = mapOf(
+            "ruleSuccessCheck" to ruleSuccessCheck,
+            "ruleFailCheck" to ruleFailCheck,
+            "ruleAlphanumericCheck" to ruleAlphanumericCheck,
+            "ruleAlphanumericFailCheck" to ruleAlphanumericFailCheck
         )
 
         assertEquals(Action.Allow, AffirmationBuilderFactory(httpServletRequest, rules).affirm())
@@ -138,10 +129,7 @@ class ServletParameterTests {
 
     @Test
     fun testContextFailHttpParametersOperationsReject(){
-        this.httpServletRequest = Mockito.mock(HttpServletRequest::class.java)
-        var parameters = mutableMapOf("name" to arrayOf("Marimuthu Mahalingam"), "password" to arrayOf("&^%$"))
-        parameters["other"] = arrayOf("first", "\\//")
-        `when`(httpServletRequest.parameterMap).thenReturn(parameters as Map<*, *>?)
+        val httpServletRequest = TestSuccessHelpers().httpServletRequest
 
         var contextConditionFail = Condition(Http.Parameter, Parameters.hasParameter, "passwords")
         var contextCondition = Condition(Http.Parameter, Parameters.hasParameter, "password")
@@ -151,8 +139,8 @@ class ServletParameterTests {
         var matchValueCondition =
             Condition(Http.Parameter, Parameters.matchParameterWithValue, "n[am]{2}e", "^Mari\\w+\\sMaha\\w+$")
         var ruleSuccessCheck = Rule(
-            arrayOf(contextCondition),
-            arrayOf(matchCondition, hasKeyCondition, matchValueCondition),
+            listOf(contextCondition),
+            listOf(matchCondition, hasKeyCondition, matchValueCondition),
             Action.Allow,
             Action.Reject
         )
@@ -160,10 +148,10 @@ class ServletParameterTests {
 
         var hasPasswordCondition = Condition(Http.Parameter, Parameters.hasParameter, "password")
         var matchPasswordCondition =
-            Condition(Http.Parameter, Parameters.matchParameterWithValue, "^password$", "\\W")
+            Condition(Http.Parameter, Parameters.matchParameterWithValue, "^password$", "^\\w+$")
         var ruleFailCheck = Rule(
-            arrayOf(contextCondition),
-            arrayOf(hasPasswordCondition, matchPasswordCondition),
+            listOf(contextCondition),
+            listOf(hasPasswordCondition, matchPasswordCondition),
             Action.Reject,
             Action.Allow
         )
@@ -171,8 +159,8 @@ class ServletParameterTests {
         var hasAlphanumericCondition =
             Condition(Http.Parameter, Parameters.valueHasOnlyAlphaNumericChar, "password")
         var ruleAlphanumericCheck = Rule(
-            arrayOf(contextCondition),
-            arrayOf(hasAlphanumericCondition),
+            listOf(contextCondition),
+            listOf(hasAlphanumericCondition),
             Action.Allow,
             Action.Reject
         )
@@ -180,17 +168,17 @@ class ServletParameterTests {
         var hasAlphanumericConditionFail =
             Condition(Http.Parameter, Parameters.valueHasOnlyAlphaNumericChar, "other")
         var ruleAlphanumericFailCheck = Rule(
-            arrayOf(contextConditionFail),
-            arrayOf(hasAlphanumericConditionFail),
+            listOf(contextConditionFail),
+            listOf(hasAlphanumericConditionFail),
             Action.Reject,
             Action.Allow
         )
 
-        val rules = arrayOf(
-            ruleSuccessCheck,
-            ruleFailCheck,
-            ruleAlphanumericCheck,
-            ruleAlphanumericFailCheck
+        val rules = mapOf(
+            "ruleSuccessCheck" to ruleSuccessCheck,
+            "ruleFailCheck" to ruleFailCheck,
+            "ruleAlphanumericCheck" to ruleAlphanumericCheck,
+            "ruleAlphanumericFailCheck" to ruleAlphanumericFailCheck
         )
 
         assertEquals(Action.Reject, AffirmationBuilderFactory(httpServletRequest, rules).affirm())

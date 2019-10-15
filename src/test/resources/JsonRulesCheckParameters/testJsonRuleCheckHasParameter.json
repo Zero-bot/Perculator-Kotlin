@@ -1,0 +1,77 @@
+{
+  "Rules": {
+    "checkParameter": {
+      "conditions": [
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.hasParameter",
+          "key": "name"
+        },
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.hasParameter",
+          "key": "password"
+        }
+      ],
+      "action": {
+        "success": "Allow",
+        "failure": "Reject"
+      }
+    },
+    "checkCookie": {
+      "conditions": [
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.hasParameter",
+          "key": "name"
+        },
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.hasParameter",
+          "key": "password"
+        },
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.match",
+          "key": "password",
+          "value": "p\\w?s{2}"
+        }
+      ],
+      "action": {
+        "success": "Allow",
+        "failure": "Reject"
+      }
+    },
+    "contextNotMatch": {
+      "context": [
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.hasParameter",
+          "key": "noSuchParam"
+        }
+      ],
+      "conditions": [
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.hasParameter",
+          "key": "name"
+        },
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.hasParameter",
+          "key": "password"
+        },
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.match",
+          "key": "password",
+          "value": "p\\w?s{2}"
+        }
+      ],
+      "action": {
+        "success": "Allow",
+        "failure": "Reject"
+      }
+    }
+  }
+}

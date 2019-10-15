@@ -3,7 +3,7 @@ package affirm.rule
 import result.Action
 import javax.servlet.http.HttpServletRequest
 
-class Rule(private val contextConditions: Array<Condition>?, private val conditions: Array<Condition>, private val actionSuccess: Action, private val actionFailure: Action) {
+class Rule(private val contextConditions: List<Condition>?, private val conditions: List<Condition>, private val actionSuccess: Action, private val actionFailure: Action) {
     private fun evaluateConditions(httpServletRequest: HttpServletRequest): Boolean {
         return conditions.all { condition ->
             condition.evaluate(httpServletRequest)

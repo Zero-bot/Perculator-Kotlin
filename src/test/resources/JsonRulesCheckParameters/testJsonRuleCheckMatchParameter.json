@@ -1,0 +1,78 @@
+{
+  "Rules": {
+    "checkParameterMatch": {
+      "conditions": [
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.match",
+          "key": "name",
+          "value": "^Marimuthu\\sMahalingam$"
+        },
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.matchParameter",
+          "key": "^pass\\w+$"
+        }
+      ],
+      "action": {
+        "success": "Allow",
+        "failure": "Reject"
+      }
+    },
+    "checkHasParameter": {
+      "conditions": [
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.hasParameter",
+          "key": "name"
+        },
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.hasParameter",
+          "key": "password"
+        },
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.match",
+          "key": "password",
+          "value": "p\\w?s{2}"
+        }
+      ],
+      "action": {
+        "success": "Allow",
+        "failure": "Reject"
+      }
+    },
+    "contextNotMatch": {
+      "context": [
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.hasParameter",
+          "key": "noSuchParam"
+        }
+      ],
+      "conditions": [
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.hasParameter",
+          "key": "name"
+        },
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.hasParameter",
+          "key": "password"
+        },
+        {
+          "location": "Http.Parameter",
+          "operator": "Parameter.match",
+          "key": "password",
+          "value": "p\\w?s{2}"
+        }
+      ],
+      "action": {
+        "success": "Allow",
+        "failure": "Reject"
+      }
+    }
+  }
+}
