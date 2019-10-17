@@ -14,21 +14,21 @@ class JsonRulesCheckParameters {
     fun testJsonRuleCheckHasParameter(){
         val httpServletRequest = TestSuccessHelpers().httpServletRequest
         var perculator = Perculator("src/test/resources/JsonRulesCheckParameters/testJsonRuleCheckHasParameter.json")
-        assertEquals(Action.Allow, AffirmationBuilderFactory(httpServletRequest, perculator.ruleSet).affirm())
+        assertEquals(Action.Allow, perculator.evaluate(httpServletRequest))
     }
 
     @Test
     fun testJsonRuleCheckHasParameterFailure(){
         val httpServletRequest = TestFailureHelpers().httpServletRequest
         var perculator = Perculator("src/test/resources/JsonRulesCheckParameters/testJsonRuleCheckHasParameterFailure.json")
-        assertEquals(Action.Reject, AffirmationBuilderFactory(httpServletRequest, perculator.ruleSet).affirm())
+        assertEquals(Action.Reject, perculator.evaluate(httpServletRequest))
     }
 
     @Test
     fun testJsonRuleCheckMatchParameter(){
         val httpServletRequest = TestSuccessHelpers().httpServletRequest
         var perculator = Perculator("src/test/resources/JsonRulesCheckParameters/testJsonRuleCheckMatchParameter.json")
-        assertEquals(Action.Allow, AffirmationBuilderFactory(httpServletRequest, perculator.ruleSet).affirm())
+        assertEquals(Action.Allow, perculator.evaluate(httpServletRequest))
     }
 
 }

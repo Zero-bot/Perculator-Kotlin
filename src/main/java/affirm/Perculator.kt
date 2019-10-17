@@ -4,9 +4,11 @@ package affirm
 import affirm.rule.Rule
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
+import result.Action
 import serializer.JsonRuleSet
 import java.io.File
 import java.io.FileNotFoundException
+import javax.servlet.http.HttpServletRequest
 
 class Perculator(private val jsonRulesPath: String) {
 
@@ -30,5 +32,8 @@ class Perculator(private val jsonRulesPath: String) {
 
     private fun isJsonRulesFileModified(jsonRulesFile: File) = jsonRulesFile.lastModified() != jsonRulesFileLastModified
 
+    fun evaluate(httpServletRequest: HttpServletRequest): Action {
+        return AffirmationBuilderFactory(httpServletRequest, this.ruleSet).affirm()
+    }
 
 }
