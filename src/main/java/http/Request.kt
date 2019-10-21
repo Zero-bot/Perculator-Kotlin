@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest
 class Request(httpServletRequest: HttpServletRequest) {
     
     private val method: String = httpServletRequest.method
-    private val queryString: String = httpServletRequest.queryString
+    private val queryString: String? = httpServletRequest.queryString
     private val uri: String = httpServletRequest.requestURI
     private val scheme: String = httpServletRequest.scheme
     private val protocol: String = httpServletRequest.protocol
@@ -82,10 +82,22 @@ class Request(httpServletRequest: HttpServletRequest) {
     
     private fun queryStringEquals(key: String) = key == queryString
     private fun queryStringNotEquals(key: String) = key != queryString
-    private fun queryStringContains(key: String) = queryString.contains(key)
-    private fun queryStringNotContains(key: String) = !queryString.contains(key)
-    private fun queryStringMatch(regex: Regex) = regex.containsMatchIn(queryString)
-    private fun queryStringNotMatch(regex: Regex) = !regex.containsMatchIn(queryString)
+    private fun queryStringContains(key: String): Boolean {
+        if(!queryString.isNullOrEmpty()) return queryString.contains(key)
+        throw NullPointerException("Query String is null")
+    }
+    private fun queryStringNotContains(key: String): Boolean {
+        if(!queryString.isNullOrEmpty()) return !queryString.contains(key)
+        throw NullPointerException("Query String is null")
+    }
+    private fun queryStringMatch(regex: Regex): Boolean {
+        if(!queryString.isNullOrEmpty()) return regex.containsMatchIn(queryString)
+        throw NullPointerException("Query String is null")
+    }
+    private fun queryStringNotMatch(regex: Regex): Boolean {
+        if(!queryString.isNullOrEmpty()) return !regex.containsMatchIn(queryString)
+        throw NullPointerException("Query String is null")
+    }
 
     private fun uriEquals(key: String) = uri == key
     private fun uriNotEquals(key: String) = uri != key
