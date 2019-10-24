@@ -1,6 +1,7 @@
 package http
 
 import exception.KeyCannotBeNullException
+import exception.NoSuchCookieException
 import exception.OperatorNotSupportedException
 import exception.ValueCannotBeNullException
 import javax.servlet.http.Cookie
@@ -21,17 +22,41 @@ class Cookies(httpServletRequest: HttpServletRequest) {
 
     private fun hasCookie(key: String) = this.parameters.any { it.name == key }
 
-    private fun cookieHasValue(key: String, value: String) = this.parameters.any { it.name == key && it.value == value }
+    private fun getKeyIndex(key: String): Int {
+        for((index, value) in parameters.withIndex()){
+            if(value.name == key)
+                return index
+        }
+        return -1
+    }
+
+    private fun cookieHasValue(key: String, value: String): Boolean {
+        val index = getKeyIndex(key)
+        if(index == -1) throw NoSuchCookieException(key)
+        return parameters[index].value == value
+    }
 
     private fun matchCookie(keyRegex: Regex) = this.parameters.any { keyRegex.containsMatchIn(it.name) }
 
-    private fun matchValue(key: String, valueRegex: Regex) = this.parameters.any { it.name == key && valueRegex.containsMatchIn(it.value) }
+    private fun matchValue(key: String, valueRegex: Regex): Boolean {
+        val index = getKeyIndex(key)
+        if(index == -1) throw NoSuchCookieException(key)
+       return valueRegex.containsMatchIn(parameters[index].value)
+    }
 
     private fun countCookies(count: Int) = this.parameters.size == count
 
-    private fun valueHasOnlyAlphaNumericChar(key: String) = this.parameters.any { it.name == key && "^[a-zA-Z0-9]+$".toRegex().containsMatchIn(it.value) }
+    private fun valueHasOnlyAlphaNumericChar(key: String): Boolean {
+        val index = getKeyIndex(key)
+        if(index == -1) throw NoSuchCookieException(key)
+        return "^[a-zA-Z0-9]+$".toRegex().containsMatchIn(parameters[index].value)
+    }
 
-    private fun valueLengthEquals(key: String, length: Int) = this.parameters.any { it.name == key && it.value.length == length }
+    private fun valueLengthEquals(key: String, length: Int): Boolean {
+        val index = getKeyIndex(key)
+        if(index == -1) throw NoSuchCookieException(key)
+        return parameters[index].value.length == length
+    }
 
     fun evaluate(operator: Byte, key: String?, value: String?): Boolean {
         if (key != null) {
