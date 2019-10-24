@@ -1,6 +1,7 @@
 package http
 
 import exception.KeyCannotBeNullException
+import exception.NoSuchParameterException
 import exception.OperatorNotSupportedException
 import exception.ValueCannotBeNullException
 import java.lang.NumberFormatException
@@ -26,29 +27,26 @@ class Parameters(val httpServletRequest: HttpServletRequest) {
     private fun matchParameter(keyRegex: Regex) = parameters.filterKeys { keyRegex.containsMatchIn(it as String) }.isNotEmpty()
 
     private fun hasParameterWithValue(key: String, value: String):Boolean{
-        if(hasParameter(key))
-            return parameters.filterKeys { it == key }.all { allMatch(it.value as Array<Any>, value) }
-        return false
+        if(hasParameter(key).not()) throw NoSuchParameterException("key")
+        return parameters.filterKeys { it == key }.all { allMatch(it.value as Array<Any>, value) }
     }
 
     private fun matchParameterWithValue(keyRegex: Regex, valueRegex: Regex): Boolean {
-        if (matchParameter(keyRegex))
-            return parameters.filterKeys { keyRegex.containsMatchIn(it as String) }.all { allMatch(it.value as Array<Any>, valueRegex) }
-        return false
+        if(matchParameter(keyRegex).not()) throw NoSuchParameterException("key")
+        return parameters.filterKeys { keyRegex.containsMatchIn(it as String) }.all { allMatch(it.value as Array<Any>, valueRegex) }
+
     }
 
     private fun match(key: String, regex: Regex): Boolean {
-        if(hasParameter(key))
-            return parameters.filterKeys { it == key }.all { allMatch(it.value as Array<Any>, regex) }
-        return false
+        if(hasParameter(key).not()) throw NoSuchParameterException("key")
+        return parameters.filterKeys { it == key }.all { allMatch(it.value as Array<Any>, regex) }
     }
 
     private fun countParameters(count: Int) = parameters.size == count
 
     private fun valueHasOnlyAlphaNumericChar(key: String): Boolean{
-        if(hasParameter(key))
-            return parameters.filterKeys { it == key }.all { allMatch( it.value as Array<Any>, "^[a-zA-Z0-9]+$".toRegex() ) }
-        return false
+        if(hasParameter(key).not()) throw NoSuchParameterException("key")
+        return parameters.filterKeys { it == key }.all { allMatch( it.value as Array<Any>, "^[a-zA-Z0-9]+$".toRegex() ) }
     }
 
     private fun allMatch(value: Array<Any>, regex: Regex): Boolean {

@@ -1,7 +1,7 @@
 package exception
 
 class InvalidNameException(message: String) : Exception(message)
-class NoSuchParameterException(name: String): Exception("Parameter $name doesn't exist in given context.")
+class NoSuchParameterException(key: String): Exception("No such parameter named $key. Always confirm presence of header before validating its value")
 class ValueCannotBeNullException(operator: String): Exception("Value cannot be null for $operator operator.")
 class KeyCannotBeNullException(operator: String): Exception("Key cannot be null for $operator operator.")
 class OperatorNotSupportedException(keyword: Byte, location: String): Exception("Operator byte $keyword not supported for $location")
