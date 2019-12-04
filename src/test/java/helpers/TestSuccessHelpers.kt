@@ -1,13 +1,14 @@
 package helpers
 
 import affirm.Perculator
+import http.wrapper.RequestWrapper
 import org.mockito.Mockito
 import java.util.*
 import javax.servlet.http.Cookie
 import javax.servlet.http.HttpServletRequest
 
 class TestSuccessHelpers {
-    var httpServletRequest: HttpServletRequest
+    var httpServletRequest: RequestWrapper
 
     init {
         val sessionCookie = Cookie("SessionId", "abcdefghijklmnopqrstuvwxyz")
@@ -36,7 +37,7 @@ class TestSuccessHelpers {
         headers["Cache-Control"] = listOf("max-age=3600, public").toEnumeration()
 
 
-        this.httpServletRequest = Mockito.mock(HttpServletRequest::class.java)
+        this.httpServletRequest = Mockito.mock(RequestWrapper::class.java)
         Mockito.`when`(httpServletRequest.parameterMap).thenReturn(parameters as Map<*, *>?)
         Mockito.`when`(httpServletRequest.cookies).thenReturn(cookies)
         Mockito.`when`(httpServletRequest.method).thenReturn(method)

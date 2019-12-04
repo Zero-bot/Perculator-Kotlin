@@ -1,10 +1,11 @@
 package affirm
 
 import affirm.rule.Rule
+import http.wrapper.RequestWrapper
 import result.Action
 import javax.servlet.http.HttpServletRequest
 
-class AffirmationBuilderFactory(val httpServletRequest: HttpServletRequest, private val rules: Map<String, Rule>) {
+class AffirmationBuilderFactory(val httpServletRequest: RequestWrapper, private val rules: Map<String, Rule>) {
 
     fun affirm(): Action {
         var actions = mutableListOf<Action>()

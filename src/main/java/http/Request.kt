@@ -3,9 +3,9 @@ package http
 
 import exception.KeyCannotBeNullException
 import exception.OperatorNotSupportedException
-import javax.servlet.http.HttpServletRequest
+import http.wrapper.RequestWrapper
 
-class Request(httpServletRequest: HttpServletRequest) {
+class Request(httpServletRequest: RequestWrapper) {
     
     private val method: String = httpServletRequest.method
     private val queryString: String? = httpServletRequest.queryString

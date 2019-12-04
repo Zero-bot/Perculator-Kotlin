@@ -2,6 +2,7 @@ package affirm
 
 
 import affirm.rule.Rule
+import http.wrapper.RequestWrapper
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 import result.Action
@@ -32,7 +33,7 @@ class Perculator(private val jsonRulesPath: String) {
 
     private fun isJsonRulesFileModified(jsonRulesFile: File) = jsonRulesFile.lastModified() != jsonRulesFileLastModified
 
-    fun evaluate(httpServletRequest: HttpServletRequest): Action {
+    fun evaluate(httpServletRequest: RequestWrapper): Action {
         return AffirmationBuilderFactory(httpServletRequest, this.ruleSet).affirm()
     }
 

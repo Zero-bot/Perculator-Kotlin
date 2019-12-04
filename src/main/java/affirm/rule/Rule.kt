@@ -1,5 +1,6 @@
 package affirm.rule
 
+import http.wrapper.RequestWrapper
 import result.Action
 import javax.servlet.http.HttpServletRequest
 
@@ -7,13 +8,13 @@ class Rule(private val contextConditions: List<Condition>?, private val conditio
 
     fun getPriority() = this.priority
 
-    private fun evaluateConditions(httpServletRequest: HttpServletRequest): Boolean {
+    private fun evaluateConditions(httpServletRequest: RequestWrapper): Boolean {
         return conditions.all { condition ->
             condition.evaluate(httpServletRequest)
         }
     }
 
-    private fun evaluateContextConditions(httpServletRequest: HttpServletRequest): Boolean{
+    private fun evaluateContextConditions(httpServletRequest: RequestWrapper): Boolean{
         if(contextConditions.isNullOrEmpty()) return true
 
         return contextConditions.all{condition ->
@@ -21,7 +22,7 @@ class Rule(private val contextConditions: List<Condition>?, private val conditio
         }
     }
 
-    fun evaluate(httpServletRequest: HttpServletRequest): Action {
+    fun evaluate(httpServletRequest: RequestWrapper): Action {
 
         if(evaluateContextConditions(httpServletRequest).not()) return Action.Skip
 

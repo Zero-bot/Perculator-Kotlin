@@ -3,6 +3,7 @@ package affirm.rule
 import exception.InvalidLocationException
 import exception.KeyCannotBeNullException
 import http.*
+import http.wrapper.RequestWrapper
 import kotlinx.serialization.Serializable
 import javax.servlet.http.HttpServletRequest
 
@@ -34,7 +35,7 @@ class Condition {
         this.value = null
     }
 
-    fun evaluate(httpServletRequest: HttpServletRequest): Boolean {
+    fun evaluate(httpServletRequest: RequestWrapper): Boolean {
         return when(this.location){
             Http.Parameter -> evaluateParameterCondition(httpServletRequest)
             Http.Cookie -> evaluateCookieCondition(httpServletRequest)
@@ -62,7 +63,7 @@ class Condition {
         throw KeyCannotBeNullException("Header conditions")
     }
 
-    private fun evaluateRequestCondition(httpServletRequest: HttpServletRequest): Boolean {
+    private fun evaluateRequestCondition(httpServletRequest: RequestWrapper): Boolean {
         return Request(httpServletRequest).evaluate(this.operator, this.key)
     }
 }
