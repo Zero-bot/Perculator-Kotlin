@@ -3,7 +3,6 @@ package affirm.rule
 import exception.InvalidLocationException
 import http.*
 import wrappers.MutableHttpServletRequest
-import javax.servlet.http.HttpServletRequest
 
 class Evaluator {
      private var condition: Condition
