@@ -1,10 +1,10 @@
 package http
 
+import http.wrapper.RequestWrapper
 import java.util.*
-import javax.servlet.http.HttpServletRequest
 
 
-class Http(private val httpServletRequest: HttpServletRequest) {
+class Http(private val httpServletRequest: RequestWrapper) {
 
     companion object{
         const val Parameter: Byte = 0
