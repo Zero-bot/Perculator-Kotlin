@@ -1,13 +1,14 @@
 package http
 
+import com.jayway.jsonpath.Configuration
 import exception.KeyCannotBeNullException
 import exception.NoSuchParameterException
 import exception.OperatorNotSupportedException
 import exception.ValueCannotBeNullException
-import java.lang.NumberFormatException
-import javax.servlet.http.HttpServletRequest
+import wrappers.MutableHttpServletRequest
 
-class Parameters(val httpServletRequest: HttpServletRequest) {
+
+class Parameters(val httpServletRequest: MutableHttpServletRequest) {
 
     companion object {
         const val hasParameter: Byte = 1
@@ -19,8 +20,22 @@ class Parameters(val httpServletRequest: HttpServletRequest) {
         const val valueHasOnlyAlphaNumericChar: Byte = 7
     }
 
-    private val parameters: Map<*, *>
-        get() = this.httpServletRequest.parameterMap as Map<*, *>
+    private val parameters: Map<String, String>
+        get() {
+            return httpServletRequest.parameterMap as Map<String, String>
+        }
+    private var jsonBody: Any? = null
+        get() {
+            if(httpServletRequest.isJsonBody()){
+                val document: Any = Configuration.defaultConfiguration().jsonProvider().parse(httpServletRequest.getBody())
+                jsonBody = document
+            }
+            return field
+        }
+
+    private fun MutableHttpServletRequest.isJsonBody(): Boolean {
+        return this.contentType.contains("json", true)
+    }
 
     private fun hasParameter(key: String) = parameters.containsKey(key)
 

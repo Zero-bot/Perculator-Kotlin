@@ -2,6 +2,7 @@ package affirm.rule
 
 import exception.InvalidLocationException
 import http.*
+import wrappers.MutableHttpServletRequest
 import javax.servlet.http.HttpServletRequest
 
 class Evaluator {
@@ -11,7 +12,7 @@ class Evaluator {
         this.condition = condition
     }
 
-    fun evaluateCondition(httpServletRequest: HttpServletRequest): Boolean {
+    fun evaluateCondition(httpServletRequest: MutableHttpServletRequest): Boolean {
         if(condition.location == Http.Parameter){
             return Parameters(httpServletRequest).evaluate(condition.operator, condition.key, condition.value)
         }

@@ -1,6 +1,5 @@
 package perculator_json
 
-import affirm.AffirmationBuilderFactory
 import affirm.Perculator
 import helpers.TestFailureHelpers
 import helpers.TestSuccessHelpers

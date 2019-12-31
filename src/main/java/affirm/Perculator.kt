@@ -8,7 +8,7 @@ import result.Action
 import serializer.JsonRuleSet
 import java.io.File
 import java.io.FileNotFoundException
-import javax.servlet.http.HttpServletRequest
+import wrappers.MutableHttpServletRequest
 
 class Perculator(private val jsonRulesPath: String) {
 
@@ -32,7 +32,7 @@ class Perculator(private val jsonRulesPath: String) {
 
     private fun isJsonRulesFileModified(jsonRulesFile: File) = jsonRulesFile.lastModified() != jsonRulesFileLastModified
 
-    fun evaluate(httpServletRequest: HttpServletRequest): Action {
+    fun evaluate(httpServletRequest: MutableHttpServletRequest): Action {
         return AffirmationBuilderFactory(httpServletRequest, this.ruleSet).affirm()
     }
 

@@ -28,7 +28,9 @@ class Headers(val httpServletRequest: HttpServletRequest) {
         return httpServletRequest.getHeaders(key).asSequence().any { it == value }
     }
 
-        private fun matchHeader(keyRegex: Regex) = httpServletRequest.headerNames.toList().any { keyRegex.containsMatchIn(it as CharSequence) }
+        private fun matchHeader(keyRegex: Regex) = httpServletRequest.headerNames.toList().any {
+            keyRegex.containsMatchIn(it as CharSequence)
+        }
 
         private fun matchHeaderValue(key: String, valueRegex: Regex): Boolean {
             if(hasHeader(key).not()) throw NoSuchHeaderException(key)

@@ -4,6 +4,7 @@ import exception.InvalidLocationException
 import exception.KeyCannotBeNullException
 import http.*
 import kotlinx.serialization.Serializable
+import wrappers.MutableHttpServletRequest
 import javax.servlet.http.HttpServletRequest
 
 @Serializable
@@ -34,7 +35,7 @@ class Condition {
         this.value = null
     }
 
-    fun evaluate(httpServletRequest: HttpServletRequest): Boolean {
+    fun evaluate(httpServletRequest: MutableHttpServletRequest): Boolean {
         return when(this.location){
             Http.Parameter -> evaluateParameterCondition(httpServletRequest)
             Http.Cookie -> evaluateCookieCondition(httpServletRequest)
@@ -44,25 +45,25 @@ class Condition {
         }
     }
 
-    private fun evaluateParameterCondition(httpServletRequest: HttpServletRequest): Boolean {
+    private fun evaluateParameterCondition(httpServletRequest: MutableHttpServletRequest): Boolean {
         if(this.key != null)
             return Parameters(httpServletRequest).evaluate(this.operator, this.key, this.value)
         throw KeyCannotBeNullException("Parameter conditions")
     }
 
-    private fun evaluateCookieCondition(httpServletRequest: HttpServletRequest): Boolean {
+    private fun evaluateCookieCondition(httpServletRequest: MutableHttpServletRequest): Boolean {
         if(this.key != null)
             return Cookies(httpServletRequest).evaluate(this.operator, this.key, this.value)
         throw KeyCannotBeNullException("Cookie conditions")
     }
 
-    private fun evaluateHeaderCondition(httpServletRequest: HttpServletRequest): Boolean {
+    private fun evaluateHeaderCondition(httpServletRequest: MutableHttpServletRequest): Boolean {
         if(this.key != null)
             return Headers(httpServletRequest).evaluate(this.operator, this.key, this.value)
         throw KeyCannotBeNullException("Header conditions")
     }
 
-    private fun evaluateRequestCondition(httpServletRequest: HttpServletRequest): Boolean {
+    private fun evaluateRequestCondition(httpServletRequest: MutableHttpServletRequest): Boolean {
         return Request(httpServletRequest).evaluate(this.operator, this.key)
     }
 }

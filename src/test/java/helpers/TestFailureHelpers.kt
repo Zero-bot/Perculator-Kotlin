@@ -1,12 +1,13 @@
 package helpers
 
 import org.mockito.Mockito
+import wrappers.MutableHttpServletRequest
 import java.util.*
 import javax.servlet.http.Cookie
 import javax.servlet.http.HttpServletRequest
 
 class TestFailureHelpers {
-    var httpServletRequest: HttpServletRequest
+    var httpServletRequest: MutableHttpServletRequest
 
     init {
         val sessionCookie = Cookie("SessionId", "abcdefghijklmnopqrstuvwxyz")
@@ -37,7 +38,7 @@ class TestFailureHelpers {
         headers["Cache-Control"] = listOf("max-age=3600, public").toEnumeration()
 
 
-        this.httpServletRequest = Mockito.mock(HttpServletRequest::class.java)
+        this.httpServletRequest = Mockito.mock(MutableHttpServletRequest::class.java)
         Mockito.`when`(httpServletRequest.parameterMap).thenReturn(parameters as Map<*, *>?)
         Mockito.`when`(httpServletRequest.cookies).thenReturn(cookies)
         Mockito.`when`(httpServletRequest.method).thenReturn(method)
