@@ -1,10 +1,10 @@
 package http
 
-import http.wrapper.RequestWrapper
+import wrappers.MutableHttpServletRequest
 import java.util.*
 
 
-class Http(private val httpServletRequest: RequestWrapper) {
+class Http(private val httpServletRequest: MutableHttpServletRequest) {
 
     companion object{
         const val Parameter: Byte = 0

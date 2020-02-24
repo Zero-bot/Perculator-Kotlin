@@ -28,7 +28,7 @@ class TestSuccessHelpers {
         var protocol = "HTTP 1.1"
         var server = "github.com"
 
-        var headers = mutableMapOf<String, Enumeration<*>>()
+        val headers = mutableMapOf<String, Enumeration<*>>()
         headers["host"] = listOf("www.google.com", "www.google_a.com").toEnumeration()
         headers["user-agent"] = listOf("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36").toEnumeration()
         headers["Transfer-Encoding"] = listOf("chunked").toEnumeration()
