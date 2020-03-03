@@ -22,9 +22,10 @@ class Headers(val httpServletRequest: HttpServletRequest) {
     }
 
     private fun hasHeader(key: String): Boolean {
-        println(httpServletRequest.headerNames.toList())
-        for (header in httpServletRequest.headerNames){
-            println(header)
+        val headerName = httpServletRequest.headerNames
+        while (headerName.hasMoreElements()){
+            val header = headerName.nextElement()
+            print(header)
             if(key.equals(header as String, true))
                 return true
         }
@@ -69,7 +70,6 @@ class Headers(val httpServletRequest: HttpServletRequest) {
         private fun headerCountEquals(key: String, count: Int) = httpServletRequest.getHeaders(key).toList().size == count
 
         fun evaluate(operator: Byte, key: String?, value: String?): Boolean {
-            println("Opertaor: $operator")
             if (key != null) {
                 if (operator == hasHeader) {
                     println("operator hasHeader")

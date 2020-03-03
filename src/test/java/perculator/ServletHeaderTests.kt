@@ -26,7 +26,7 @@ class ServletHeaderTests {
         val matchValueCondition = Condition(Http.Cookie, Cookies.matchValue, "SessionId","^[a-z]+$")
         val hasHeaderCondition = Condition(Http.Header, Headers.hasHeader, "host")
 
-        val conditions = listOf(hasSessionCookieCondition, matchValueCondition, hasHeaderCondition)
+        val conditions = listOf(hasSessionCookieCondition, matchValueCondition)
 
         val rule = Rule(contextConditions = context, conditions = conditions, actionSuccess = Action.Allow, actionFailure = Action.Reject)
 
