@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.perculator.core.engine.RuleEngineTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-03-25T06:32:21" hostname="(none)" time="1.732">
+  <properties/>
+  <testcase name="short-circuits on REJECT()" classname="io.perculator.core.engine.RuleEngineTest" time="1.693"/>
+  <testcase name="multiple rules all evaluated when no REJECT()" classname="io.perculator.core.engine.RuleEngineTest" time="0.006"/>
+  <testcase name="empty rules returns ALLOW()" classname="io.perculator.core.engine.RuleEngineTest" time="0.003"/>
+  <testcase name="single matching rule returns actionOnMatch()" classname="io.perculator.core.engine.RuleEngineTest" time="0.004"/>
+  <testcase name="rules sorted by priority()" classname="io.perculator.core.engine.RuleEngineTest" time="0.004"/>
+  <testcase name="non-matching rule returns actionOnMismatch()" classname="io.perculator.core.engine.RuleEngineTest" time="0.005"/>
+  <testcase name="context conditions skip rule when not met()" classname="io.perculator.core.engine.RuleEngineTest" time="0.009"/>
+  <system-out><![CDATA[06:32:21.873 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#1
+06:32:23.010 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Map name=child of #1#2
+06:32:23.113 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #1#3
+06:32:23.115 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #1#4
+06:32:23.118 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering GET on PerculatorHttpRequest(#1).getMethod()
+06:32:23.118 [Test worker] DEBUG io.perculator.core.engine.RuleEngine -- Rule 'rejector' evaluated to action: REJECT
+06:32:23.119 [Test worker] DEBUG io.perculator.core.engine.RuleEngine -- Short-circuiting on REJECT from rule 'rejector'
+06:32:23.180 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#5
+06:32:23.181 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Map name=child of #5#6
+06:32:23.183 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #5#7
+06:32:23.184 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #5#8
+06:32:23.185 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering GET on PerculatorHttpRequest(#5).getMethod()
+06:32:23.185 [Test worker] DEBUG io.perculator.core.engine.RuleEngine -- Rule 'rule1' evaluated to action: LOG
+06:32:23.185 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering GET on PerculatorHttpRequest(#5).getMethod()
+06:32:23.185 [Test worker] DEBUG io.perculator.core.engine.RuleEngine -- Rule 'rule2' evaluated to action: ALLOW
+06:32:23.187 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#9
+06:32:23.187 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Map name=child of #9#10
+06:32:23.189 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #9#11
+06:32:23.189 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #9#12
+06:32:23.191 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#13
+06:32:23.192 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Map name=child of #13#14
+06:32:23.193 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #13#15
+06:32:23.194 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #13#16
+06:32:23.194 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering GET on PerculatorHttpRequest(#13).getMethod()
+06:32:23.194 [Test worker] DEBUG io.perculator.core.engine.RuleEngine -- Rule 'test' evaluated to action: ALLOW
+06:32:23.196 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#17
+06:32:23.196 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Map name=child of #17#18
+06:32:23.198 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #17#19
+06:32:23.198 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #17#20
+06:32:23.198 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering GET on PerculatorHttpRequest(#17).getMethod()
+06:32:23.198 [Test worker] DEBUG io.perculator.core.engine.RuleEngine -- Rule 'high-priority' evaluated to action: ALLOW
+06:32:23.199 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering GET on PerculatorHttpRequest(#17).getMethod()
+06:32:23.199 [Test worker] DEBUG io.perculator.core.engine.RuleEngine -- Rule 'low-priority' evaluated to action: REJECT
+06:32:23.199 [Test worker] DEBUG io.perculator.core.engine.RuleEngine -- Short-circuiting on REJECT from rule 'low-priority'
+06:32:23.202 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#21
+06:32:23.202 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Map name=child of #21#22
+06:32:23.204 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #21#23
+06:32:23.205 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #21#24
+06:32:23.205 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering GET on PerculatorHttpRequest(#21).getMethod()
+06:32:23.205 [Test worker] DEBUG io.perculator.core.engine.RuleEngine -- Rule 'test' evaluated to action: REJECT
+06:32:23.205 [Test worker] DEBUG io.perculator.core.engine.RuleEngine -- Short-circuiting on REJECT from rule 'test'
+06:32:23.207 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#25
+06:32:23.207 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Map name=child of #25#26
+06:32:23.209 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #25#27
+06:32:23.210 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #25#28
+06:32:23.211 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering {name=[Ljava.lang.String;@4d4436d0} on PerculatorHttpRequest(#25).getParameterMap()
+06:32:23.215 [Test worker] DEBUG io.perculator.core.engine.RuleEngine -- Context conditions not met for rule 'contextual', skipping
+06:32:23.216 [Test worker] DEBUG io.perculator.core.engine.RuleEngine -- Rule 'contextual' evaluated to action: SKIP
+]]></system-out>
+  <system-err><![CDATA[SLF4J(I): Connected with provider of type [ch.qos.logback.classic.spi.LogbackServiceProvider]
+WARNING: A Java agent has been loaded dynamically (/root/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.17/e3c251a39dc90badaf71c83427ba46840f219d8d/byte-buddy-agent-1.14.17.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

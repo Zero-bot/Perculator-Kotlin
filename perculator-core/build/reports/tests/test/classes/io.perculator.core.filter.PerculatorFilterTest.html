@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - PerculatorFilterTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>PerculatorFilterTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/io.perculator.core.filter.html">io.perculator.core.filter</a> &gt; PerculatorFilterTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">3</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.540s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">ALLOW action passes through filter chain()</td>
+<td class="success">0.014s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">LOG action passes through filter chain()</td>
+<td class="success">0.010s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">REJECT action returns 403()</td>
+<td class="success">0.516s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>06:32:23.361 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Perculator name=#117
+06:32:23.511 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for RuleEvaluationResult name=child of #117#118
+06:32:23.513 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for HttpServletRequest name=#119
+06:32:23.700 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for ServletInputStream name=child of #119#120
+06:32:23.703 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for HttpServletResponse name=#121
+06:32:23.755 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for FilterChain name=#122
+06:32:23.793 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering io.perculator.core.filter.PerculatorFilterTest$createServletInputStream$1@2e1add6f on HttpServletRequest(#119).getInputStream()
+06:32:23.795 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering UTF-8 on HttpServletRequest(#119).getCharacterEncoding()
+06:32:23.800 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering RuleEvaluationResult(action=REJECT, ruleName=test-rule, matchedRules=[]) on Perculator(#117).evaluate(io.perculator.core.request.JakartaServletRequestAdapter@21b744ec)
+06:32:23.800 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering GET on HttpServletRequest(#119).getMethod()
+06:32:23.800 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering /test on HttpServletRequest(#119).getRequestURI()
+06:32:23.801 [Test worker] WARN io.perculator.core.filter.PerculatorFilter -- Request rejected by rule 'test-rule': GET /test
+06:32:23.828 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering kotlin.Unit on HttpServletResponse(#121).sendError(403, Forbidden)
+06:32:23.861 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Unit name=child of #121#123
+06:32:23.875 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Unit name=child of #122#124
+06:32:23.880 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Perculator name=#125
+06:32:23.882 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for RuleEvaluationResult name=child of #125#126
+06:32:23.883 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for HttpServletRequest name=#127
+06:32:23.884 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for ServletInputStream name=child of #127#128
+06:32:23.885 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for HttpServletResponse name=#129
+06:32:23.885 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for FilterChain name=#130
+06:32:23.885 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering io.perculator.core.filter.PerculatorFilterTest$createServletInputStream$1@6e948f1c on HttpServletRequest(#127).getInputStream()
+06:32:23.885 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering UTF-8 on HttpServletRequest(#127).getCharacterEncoding()
+06:32:23.886 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering RuleEvaluationResult(action=LOG, ruleName=test-rule, matchedRules=[]) on Perculator(#125).evaluate(io.perculator.core.request.JakartaServletRequestAdapter@7ed8b44)
+06:32:23.886 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering GET on HttpServletRequest(#127).getMethod()
+06:32:23.886 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering /test on HttpServletRequest(#127).getRequestURI()
+06:32:23.886 [Test worker] WARN io.perculator.core.filter.PerculatorFilter -- Rule 'test-rule' flagged request: GET /test
+06:32:23.887 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering kotlin.Unit on FilterChain(#130).doFilter(io.perculator.core.request.CachingRequestWrapper@21280cbb, HttpServletResponse(#129))
+06:32:23.888 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Unit name=child of #130#131
+06:32:23.890 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Perculator name=#132
+06:32:23.892 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for RuleEvaluationResult name=child of #132#133
+06:32:23.893 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for HttpServletRequest name=#134
+06:32:23.895 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for ServletInputStream name=child of #134#135
+06:32:23.896 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for HttpServletResponse name=#136
+06:32:23.896 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for FilterChain name=#137
+06:32:23.897 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering io.perculator.core.filter.PerculatorFilterTest$createServletInputStream$1@3a2bb026 on HttpServletRequest(#134).getInputStream()
+06:32:23.897 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering UTF-8 on HttpServletRequest(#134).getCharacterEncoding()
+06:32:23.898 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering RuleEvaluationResult(action=ALLOW, ruleName=test-rule, matchedRules=[]) on Perculator(#132).evaluate(io.perculator.core.request.JakartaServletRequestAdapter@756c67cd)
+06:32:23.898 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering kotlin.Unit on FilterChain(#137).doFilter(io.perculator.core.request.CachingRequestWrapper@50de907a, HttpServletResponse(#136))
+06:32:23.899 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Unit name=child of #137#138
+06:32:23.901 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Unit name=child of #136#139
+06:32:23.903 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Unit name=child of #136#140
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.10.2</a> at Mar 25, 2026, 6:32:24 AM</p>
+</div>
+</div>
+</body>
+</html>

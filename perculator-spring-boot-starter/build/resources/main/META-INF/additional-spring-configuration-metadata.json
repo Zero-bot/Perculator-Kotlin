@@ -1,0 +1,34 @@
+{
+  "properties": [
+    {
+      "name": "perculator.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Enable or disable the Perculator WAF filter.",
+      "defaultValue": true
+    },
+    {
+      "name": "perculator.rules-path",
+      "type": "java.lang.String",
+      "description": "Path to the JSON rules file.",
+      "defaultValue": "classpath:perculator-rules.json"
+    },
+    {
+      "name": "perculator.body-max-size",
+      "type": "java.lang.Integer",
+      "description": "Maximum request body size in bytes.",
+      "defaultValue": 524288
+    },
+    {
+      "name": "perculator.filter-order",
+      "type": "java.lang.Integer",
+      "description": "Order of the Perculator filter in the filter chain.",
+      "defaultValue": -2147483638
+    },
+    {
+      "name": "perculator.url-patterns",
+      "type": "java.util.List<java.lang.String>",
+      "description": "URL patterns to apply the Perculator filter to.",
+      "defaultValue": ["/*"]
+    }
+  ]
+}

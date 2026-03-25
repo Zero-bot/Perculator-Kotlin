@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.perculator.core.util.RegexCacheTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-03-25T06:32:24" hostname="(none)" time="0.025">
+  <properties/>
+  <testcase name="clear removes all entries()" classname="io.perculator.core.util.RegexCacheTest" time="0.001"/>
+  <testcase name="invalid regex throws PatternSyntaxException()" classname="io.perculator.core.util.RegexCacheTest" time="0.002"/>
+  <testcase name="thread safe concurrent access()" classname="io.perculator.core.util.RegexCacheTest" time="0.013"/>
+  <testcase name="different patterns produce different instances()" classname="io.perculator.core.util.RegexCacheTest" time="0.001"/>
+  <testcase name="supports regex options()" classname="io.perculator.core.util.RegexCacheTest" time="0.001"/>
+  <testcase name="caches regex instances()" classname="io.perculator.core.util.RegexCacheTest" time="0.0"/>
+  <testcase name="size tracks cached entries()" classname="io.perculator.core.util.RegexCacheTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

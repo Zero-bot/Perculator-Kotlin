@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.perculator.core.model.LocationTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-03-25T06:32:24" hostname="(none)" time="0.007">
+  <properties/>
+  <testcase name="fromString parses Http-dot notation()" classname="io.perculator.core.model.LocationTest" time="0.0"/>
+  <testcase name="fromString throws for unknown location()" classname="io.perculator.core.model.LocationTest" time="0.002"/>
+  <testcase name="fromString parses lowercase notation()" classname="io.perculator.core.model.LocationTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

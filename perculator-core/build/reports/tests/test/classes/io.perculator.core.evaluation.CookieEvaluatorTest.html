@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - CookieEvaluatorTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>CookieEvaluatorTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/io.perculator.core.evaluation.html">io.perculator.core.evaluation</a> &gt; CookieEvaluatorTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">9</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.022s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">cookieHasValue checks exact value()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">countCookies checks count()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">hasCookie returns false when missing()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">hasCookie returns true when cookie exists()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">matchCookie matches regex on names()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">matchValue checks regex on value()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">missing cookie throws for cookieHasValue()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">valueHasOnlyAlphaNumericChar validates()</td>
+<td class="success">0.007s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">valueLengthEquals checks length()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>06:32:23.220 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#29
+06:32:23.221 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #29#30
+06:32:23.224 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [PerculatorCookie(name=session, value=abc123)] on PerculatorHttpRequest(#29).getCookies()
+06:32:23.228 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#31
+06:32:23.228 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #31#32
+06:32:23.228 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [PerculatorCookie(name=session, value=abc123)] on PerculatorHttpRequest(#31).getCookies()
+06:32:23.230 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#33
+06:32:23.231 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #33#34
+06:32:23.231 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [PerculatorCookie(name=session, value=abc)] on PerculatorHttpRequest(#33).getCookies()
+06:32:23.233 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#35
+06:32:23.234 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #35#36
+06:32:23.234 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [PerculatorCookie(name=session_id, value=abc)] on PerculatorHttpRequest(#35).getCookies()
+06:32:23.236 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#37
+06:32:23.236 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #37#38
+06:32:23.236 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [] on PerculatorHttpRequest(#37).getCookies()
+06:32:23.239 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#39
+06:32:23.239 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #39#40
+06:32:23.239 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [PerculatorCookie(name=session, value=abc123)] on PerculatorHttpRequest(#39).getCookies()
+06:32:23.241 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#41
+06:32:23.241 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #41#42
+06:32:23.242 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [PerculatorCookie(name=a, value=1), PerculatorCookie(name=b, value=2)] on PerculatorHttpRequest(#41).getCookies()
+06:32:23.243 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#43
+06:32:23.244 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #43#44
+06:32:23.244 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [PerculatorCookie(name=session, value=abc123)] on PerculatorHttpRequest(#43).getCookies()
+06:32:23.245 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#45
+06:32:23.246 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #45#46
+06:32:23.247 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [] on PerculatorHttpRequest(#45).getCookies()
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.10.2</a> at Mar 25, 2026, 6:32:24 AM</p>
+</div>
+</div>
+</body>
+</html>

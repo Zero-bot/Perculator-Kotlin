@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.perculator.core.evaluation.HeaderEvaluatorTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-03-25T06:32:23" hostname="(none)" time="0.033">
+  <properties/>
+  <testcase name="missing header throws for headerHasValue()" classname="io.perculator.core.evaluation.HeaderEvaluatorTest" time="0.003"/>
+  <testcase name="hasHeader is case-insensitive()" classname="io.perculator.core.evaluation.HeaderEvaluatorTest" time="0.008"/>
+  <testcase name="hasHeader returns true when header exists()" classname="io.perculator.core.evaluation.HeaderEvaluatorTest" time="0.001"/>
+  <testcase name="isHeaderRepeated returns false for single value()" classname="io.perculator.core.evaluation.HeaderEvaluatorTest" time="0.003"/>
+  <testcase name="totalHeadersCountEquals counts all header values()" classname="io.perculator.core.evaluation.HeaderEvaluatorTest" time="0.003"/>
+  <testcase name="isHeaderRepeated detects multiple values()" classname="io.perculator.core.evaluation.HeaderEvaluatorTest" time="0.002"/>
+  <testcase name="headerCountEquals checks specific header count()" classname="io.perculator.core.evaluation.HeaderEvaluatorTest" time="0.001"/>
+  <testcase name="headerHasValue checks exact value()" classname="io.perculator.core.evaluation.HeaderEvaluatorTest" time="0.002"/>
+  <testcase name="matchAllHeadersValue validates all values match regex()" classname="io.perculator.core.evaluation.HeaderEvaluatorTest" time="0.002"/>
+  <testcase name="matchHeader uses regex with case insensitive()" classname="io.perculator.core.evaluation.HeaderEvaluatorTest" time="0.004"/>
+  <system-out><![CDATA[06:32:23.251 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#47
+06:32:23.252 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #47#48
+06:32:23.253 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [] on PerculatorHttpRequest(#47).getHeaderNames()
+06:32:23.254 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#49
+06:32:23.255 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #49#50
+06:32:23.261 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #49#51
+06:32:23.261 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [content-type] on PerculatorHttpRequest(#49).getHeaderNames()
+06:32:23.262 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#52
+06:32:23.263 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #52#53
+06:32:23.263 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #52#54
+06:32:23.264 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [Content-Type] on PerculatorHttpRequest(#52).getHeaderNames()
+06:32:23.265 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#55
+06:32:23.266 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #55#56
+06:32:23.266 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #55#57
+06:32:23.267 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [text/html] on PerculatorHttpRequest(#55).getHeaders(Accept)
+06:32:23.268 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#58
+06:32:23.268 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #58#59
+06:32:23.269 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #58#60
+06:32:23.269 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #58#61
+06:32:23.270 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [Accept, Host] on PerculatorHttpRequest(#58).getHeaderNames()
+06:32:23.270 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [text/html] on PerculatorHttpRequest(#58).getHeaders(Accept)
+06:32:23.270 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [localhost] on PerculatorHttpRequest(#58).getHeaders(Host)
+06:32:23.271 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#62
+06:32:23.272 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #62#63
+06:32:23.272 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #62#64
+06:32:23.273 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [text/html, application/json] on PerculatorHttpRequest(#62).getHeaders(Accept)
+06:32:23.273 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#65
+06:32:23.274 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #65#66
+06:32:23.274 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #65#67
+06:32:23.275 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [text/html, application/json] on PerculatorHttpRequest(#65).getHeaders(Accept)
+06:32:23.276 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#68
+06:32:23.276 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #68#69
+06:32:23.277 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #68#70
+06:32:23.277 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [Accept] on PerculatorHttpRequest(#68).getHeaderNames()
+06:32:23.277 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [text/html, application/json] on PerculatorHttpRequest(#68).getHeaders(Accept)
+06:32:23.278 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#71
+06:32:23.278 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #71#72
+06:32:23.278 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #71#73
+06:32:23.279 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [Accept] on PerculatorHttpRequest(#71).getHeaderNames()
+06:32:23.279 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [text/html, text/plain] on PerculatorHttpRequest(#71).getHeaders(Accept)
+06:32:23.280 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#74
+06:32:23.281 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #74#75
+06:32:23.281 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #74#76
+06:32:23.283 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [X-Custom-Header] on PerculatorHttpRequest(#74).getHeaderNames()
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

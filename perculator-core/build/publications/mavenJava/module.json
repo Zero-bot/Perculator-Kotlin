@@ -1,0 +1,117 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "io.perculator",
+    "module": "perculator-core",
+    "version": "0.1.0-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.10.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "com.fasterxml.jackson.module",
+          "module": "jackson-module-kotlin",
+          "version": {
+            "requires": "2.17.2"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-databind",
+          "version": {
+            "requires": "2.17.2"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.0.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "perculator-core-0.1.0-SNAPSHOT.jar",
+          "url": "perculator-core-0.1.0-SNAPSHOT.jar",
+          "size": 162835,
+          "sha512": "a0c946f30d20fdb8658523fea94654073eb4860d136321c09ab6ca4d3f8d83fc15fb623f846ff0f9653799c153037b60fc50c561e9a953a09b99f0a5a92bb6f2",
+          "sha256": "f0811f665ab3688a213cdd3f86daffd58d091016209ef11c2b3bf96ef2232e7c",
+          "sha1": "b50b699684a5a105ce6fe9f69763d006fb38c953",
+          "md5": "e7165d77d8e0e88ee6fb09cca03b3e3e"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.slf4j",
+          "module": "slf4j-api",
+          "version": {
+            "requires": "2.0.13"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.module",
+          "module": "jackson-module-kotlin",
+          "version": {
+            "requires": "2.17.2"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-databind",
+          "version": {
+            "requires": "2.17.2"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.0.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "perculator-core-0.1.0-SNAPSHOT.jar",
+          "url": "perculator-core-0.1.0-SNAPSHOT.jar",
+          "size": 162835,
+          "sha512": "a0c946f30d20fdb8658523fea94654073eb4860d136321c09ab6ca4d3f8d83fc15fb623f846ff0f9653799c153037b60fc50c561e9a953a09b99f0a5a92bb6f2",
+          "sha256": "f0811f665ab3688a213cdd3f86daffd58d091016209ef11c2b3bf96ef2232e7c",
+          "sha1": "b50b699684a5a105ce6fe9f69763d006fb38c953",
+          "md5": "e7165d77d8e0e88ee6fb09cca03b3e3e"
+        }
+      ]
+    }
+  ]
+}
