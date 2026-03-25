@@ -1,4 +1,15 @@
-/target/
-/.idea/
-src/main/.DS_Store
-src/test/java/.DS_Store
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Kotlin
+.kotlin/
+
+# IDE
+*.iml
+.idea/
+*.swp
+
+# OS
+.DS_Store

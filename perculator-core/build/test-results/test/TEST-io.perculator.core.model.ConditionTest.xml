@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.perculator.core.model.ConditionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-03-25T06:32:24" hostname="(none)" time="0.003">
+  <properties/>
+  <testcase name="condition with null key and value()" classname="io.perculator.core.model.ConditionTest" time="0.001"/>
+  <testcase name="condition with all fields()" classname="io.perculator.core.model.ConditionTest" time="0.0"/>
+  <testcase name="operator fromString maps correctly()" classname="io.perculator.core.model.ConditionTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

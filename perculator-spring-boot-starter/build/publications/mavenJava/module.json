@@ -1,0 +1,96 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "io.perculator",
+    "module": "perculator-spring-boot-starter",
+    "version": "0.1.0-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.10.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "io.perculator",
+          "module": "perculator-core",
+          "version": {
+            "requires": "0.1.0-SNAPSHOT"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.0.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "perculator-spring-boot-starter-0.1.0-SNAPSHOT.jar",
+          "url": "perculator-spring-boot-starter-0.1.0-SNAPSHOT.jar",
+          "size": 6112,
+          "sha512": "da359e59be04e54c5093461c5c017ff02d9ad31bdf9d2da308de2eb35eac7764e4472c12dca4eb8326e5373fdc6deb09edb44f276979755d4758ca0dc2f8a3fb",
+          "sha256": "55a8b5875bf619e91a8c19198c977c59eacf405f371f07a8031c2f13835ed4f4",
+          "sha1": "f6e8edb131c1612e3eba1f3f483b73dfadeba206",
+          "md5": "95e3e38c7912d1f78a7bd33d4a19b81a"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "io.perculator",
+          "module": "perculator-core",
+          "version": {
+            "requires": "0.1.0-SNAPSHOT"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.0.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "perculator-spring-boot-starter-0.1.0-SNAPSHOT.jar",
+          "url": "perculator-spring-boot-starter-0.1.0-SNAPSHOT.jar",
+          "size": 6112,
+          "sha512": "da359e59be04e54c5093461c5c017ff02d9ad31bdf9d2da308de2eb35eac7764e4472c12dca4eb8326e5373fdc6deb09edb44f276979755d4758ca0dc2f8a3fb",
+          "sha256": "55a8b5875bf619e91a8c19198c977c59eacf405f371f07a8031c2f13835ed4f4",
+          "sha1": "f6e8edb131c1612e3eba1f3f483b73dfadeba206",
+          "md5": "95e3e38c7912d1f78a7bd33d4a19b81a"
+        }
+      ]
+    }
+  ]
+}

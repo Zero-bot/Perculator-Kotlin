@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.perculator.core.evaluation.ParameterEvaluatorTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-03-25T06:32:23" hostname="(none)" time="0.028">
+  <properties/>
+  <testcase name="null value throws for operators requiring value()" classname="io.perculator.core.evaluation.ParameterEvaluatorTest" time="0.002"/>
+  <testcase name="missing parameter throws for hasParameterWithValue()" classname="io.perculator.core.evaluation.ParameterEvaluatorTest" time="0.005"/>
+  <testcase name="valueHasOnlyAlphaNumericChar rejects special chars()" classname="io.perculator.core.evaluation.ParameterEvaluatorTest" time="0.003"/>
+  <testcase name="valueHasOnlyAlphaNumericChar validates alphanumeric()" classname="io.perculator.core.evaluation.ParameterEvaluatorTest" time="0.001"/>
+  <testcase name="countParameters checks count()" classname="io.perculator.core.evaluation.ParameterEvaluatorTest" time="0.002"/>
+  <testcase name="null key throws EvaluationException()" classname="io.perculator.core.evaluation.ParameterEvaluatorTest" time="0.002"/>
+  <testcase name="hasParameterWithValue checks exact value()" classname="io.perculator.core.evaluation.ParameterEvaluatorTest" time="0.001"/>
+  <testcase name="match validates regex on values()" classname="io.perculator.core.evaluation.ParameterEvaluatorTest" time="0.001"/>
+  <testcase name="hasParameterWithValue returns false for wrong value()" classname="io.perculator.core.evaluation.ParameterEvaluatorTest" time="0.001"/>
+  <testcase name="hasParameter returns false when parameter missing()" classname="io.perculator.core.evaluation.ParameterEvaluatorTest" time="0.002"/>
+  <testcase name="hasParameter returns true when parameter exists()" classname="io.perculator.core.evaluation.ParameterEvaluatorTest" time="0.003"/>
+  <testcase name="matchParameter matches regex on keys()" classname="io.perculator.core.evaluation.ParameterEvaluatorTest" time="0.002"/>
+  <system-out><![CDATA[06:32:23.285 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#77
+06:32:23.286 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Map name=child of #77#78
+06:32:23.286 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering {name=[Ljava.lang.String;@5efe47fd} on PerculatorHttpRequest(#77).getParameterMap()
+06:32:23.288 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#79
+06:32:23.288 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Map name=child of #79#80
+06:32:23.291 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering {} on PerculatorHttpRequest(#79).getParameterMap()
+06:32:23.293 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#81
+06:32:23.294 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Map name=child of #81#82
+06:32:23.294 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering {name=[Ljava.lang.String;@646427f7} on PerculatorHttpRequest(#81).getParameterMap()
+06:32:23.296 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#83
+06:32:23.296 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Map name=child of #83#84
+06:32:23.296 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering {name=[Ljava.lang.String;@2fc49538} on PerculatorHttpRequest(#83).getParameterMap()
+06:32:23.297 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#85
+06:32:23.298 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Map name=child of #85#86
+06:32:23.298 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering {a=[Ljava.lang.String;@7a388990, b=[Ljava.lang.String;@13213f26} on PerculatorHttpRequest(#85).getParameterMap()
+06:32:23.299 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#87
+06:32:23.300 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Map name=child of #87#88
+06:32:23.300 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering {} on PerculatorHttpRequest(#87).getParameterMap()
+06:32:23.301 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#89
+06:32:23.302 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Map name=child of #89#90
+06:32:23.302 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering {name=[Ljava.lang.String;@586495f1} on PerculatorHttpRequest(#89).getParameterMap()
+06:32:23.303 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#91
+06:32:23.303 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Map name=child of #91#92
+06:32:23.303 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering {password=[Ljava.lang.String;@50211483} on PerculatorHttpRequest(#91).getParameterMap()
+06:32:23.304 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#93
+06:32:23.305 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Map name=child of #93#94
+06:32:23.305 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering {name=[Ljava.lang.String;@23444a36} on PerculatorHttpRequest(#93).getParameterMap()
+06:32:23.306 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#95
+06:32:23.307 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Map name=child of #95#96
+06:32:23.307 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering {} on PerculatorHttpRequest(#95).getParameterMap()
+06:32:23.308 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#97
+06:32:23.308 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Map name=child of #97#98
+06:32:23.310 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering {name=[Ljava.lang.String;@6d0290d8} on PerculatorHttpRequest(#97).getParameterMap()
+06:32:23.311 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#99
+06:32:23.312 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Map name=child of #99#100
+06:32:23.312 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering {username=[Ljava.lang.String;@3a0aaaf0} on PerculatorHttpRequest(#99).getParameterMap()
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

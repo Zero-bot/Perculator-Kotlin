@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.perculator.core.evaluation.CookieEvaluatorTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-03-25T06:32:23" hostname="(none)" time="0.029">
+  <properties/>
+  <testcase name="valueHasOnlyAlphaNumericChar validates()" classname="io.perculator.core.evaluation.CookieEvaluatorTest" time="0.007"/>
+  <testcase name="hasCookie returns true when cookie exists()" classname="io.perculator.core.evaluation.CookieEvaluatorTest" time="0.001"/>
+  <testcase name="valueLengthEquals checks length()" classname="io.perculator.core.evaluation.CookieEvaluatorTest" time="0.003"/>
+  <testcase name="matchCookie matches regex on names()" classname="io.perculator.core.evaluation.CookieEvaluatorTest" time="0.002"/>
+  <testcase name="hasCookie returns false when missing()" classname="io.perculator.core.evaluation.CookieEvaluatorTest" time="0.002"/>
+  <testcase name="matchValue checks regex on value()" classname="io.perculator.core.evaluation.CookieEvaluatorTest" time="0.001"/>
+  <testcase name="countCookies checks count()" classname="io.perculator.core.evaluation.CookieEvaluatorTest" time="0.002"/>
+  <testcase name="cookieHasValue checks exact value()" classname="io.perculator.core.evaluation.CookieEvaluatorTest" time="0.001"/>
+  <testcase name="missing cookie throws for cookieHasValue()" classname="io.perculator.core.evaluation.CookieEvaluatorTest" time="0.003"/>
+  <system-out><![CDATA[06:32:23.220 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#29
+06:32:23.221 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #29#30
+06:32:23.224 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [PerculatorCookie(name=session, value=abc123)] on PerculatorHttpRequest(#29).getCookies()
+06:32:23.228 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#31
+06:32:23.228 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #31#32
+06:32:23.228 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [PerculatorCookie(name=session, value=abc123)] on PerculatorHttpRequest(#31).getCookies()
+06:32:23.230 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#33
+06:32:23.231 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #33#34
+06:32:23.231 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [PerculatorCookie(name=session, value=abc)] on PerculatorHttpRequest(#33).getCookies()
+06:32:23.233 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#35
+06:32:23.234 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #35#36
+06:32:23.234 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [PerculatorCookie(name=session_id, value=abc)] on PerculatorHttpRequest(#35).getCookies()
+06:32:23.236 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#37
+06:32:23.236 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #37#38
+06:32:23.236 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [] on PerculatorHttpRequest(#37).getCookies()
+06:32:23.239 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#39
+06:32:23.239 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #39#40
+06:32:23.239 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [PerculatorCookie(name=session, value=abc123)] on PerculatorHttpRequest(#39).getCookies()
+06:32:23.241 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#41
+06:32:23.241 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #41#42
+06:32:23.242 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [PerculatorCookie(name=a, value=1), PerculatorCookie(name=b, value=2)] on PerculatorHttpRequest(#41).getCookies()
+06:32:23.243 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#43
+06:32:23.244 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #43#44
+06:32:23.244 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [PerculatorCookie(name=session, value=abc123)] on PerculatorHttpRequest(#43).getCookies()
+06:32:23.245 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#45
+06:32:23.246 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for List name=child of #45#46
+06:32:23.247 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering [] on PerculatorHttpRequest(#45).getCookies()
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.perculator.core.filter.PerculatorFilterTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-03-25T06:32:23" hostname="(none)" time="0.543">
+  <properties/>
+  <testcase name="REJECT action returns 403()" classname="io.perculator.core.filter.PerculatorFilterTest" time="0.516"/>
+  <testcase name="LOG action passes through filter chain()" classname="io.perculator.core.filter.PerculatorFilterTest" time="0.01"/>
+  <testcase name="ALLOW action passes through filter chain()" classname="io.perculator.core.filter.PerculatorFilterTest" time="0.014"/>
+  <system-out><![CDATA[06:32:23.361 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Perculator name=#117
+06:32:23.511 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for RuleEvaluationResult name=child of #117#118
+06:32:23.513 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for HttpServletRequest name=#119
+06:32:23.700 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for ServletInputStream name=child of #119#120
+06:32:23.703 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for HttpServletResponse name=#121
+06:32:23.755 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for FilterChain name=#122
+06:32:23.793 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering io.perculator.core.filter.PerculatorFilterTest$createServletInputStream$1@2e1add6f on HttpServletRequest(#119).getInputStream()
+06:32:23.795 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering UTF-8 on HttpServletRequest(#119).getCharacterEncoding()
+06:32:23.800 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering RuleEvaluationResult(action=REJECT, ruleName=test-rule, matchedRules=[]) on Perculator(#117).evaluate(io.perculator.core.request.JakartaServletRequestAdapter@21b744ec)
+06:32:23.800 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering GET on HttpServletRequest(#119).getMethod()
+06:32:23.800 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering /test on HttpServletRequest(#119).getRequestURI()
+06:32:23.801 [Test worker] WARN io.perculator.core.filter.PerculatorFilter -- Request rejected by rule 'test-rule': GET /test
+06:32:23.828 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering kotlin.Unit on HttpServletResponse(#121).sendError(403, Forbidden)
+06:32:23.861 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Unit name=child of #121#123
+06:32:23.875 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Unit name=child of #122#124
+06:32:23.880 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Perculator name=#125
+06:32:23.882 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for RuleEvaluationResult name=child of #125#126
+06:32:23.883 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for HttpServletRequest name=#127
+06:32:23.884 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for ServletInputStream name=child of #127#128
+06:32:23.885 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for HttpServletResponse name=#129
+06:32:23.885 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for FilterChain name=#130
+06:32:23.885 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering io.perculator.core.filter.PerculatorFilterTest$createServletInputStream$1@6e948f1c on HttpServletRequest(#127).getInputStream()
+06:32:23.885 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering UTF-8 on HttpServletRequest(#127).getCharacterEncoding()
+06:32:23.886 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering RuleEvaluationResult(action=LOG, ruleName=test-rule, matchedRules=[]) on Perculator(#125).evaluate(io.perculator.core.request.JakartaServletRequestAdapter@7ed8b44)
+06:32:23.886 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering GET on HttpServletRequest(#127).getMethod()
+06:32:23.886 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering /test on HttpServletRequest(#127).getRequestURI()
+06:32:23.886 [Test worker] WARN io.perculator.core.filter.PerculatorFilter -- Rule 'test-rule' flagged request: GET /test
+06:32:23.887 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering kotlin.Unit on FilterChain(#130).doFilter(io.perculator.core.request.CachingRequestWrapper@21280cbb, HttpServletResponse(#129))
+06:32:23.888 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Unit name=child of #130#131
+06:32:23.890 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Perculator name=#132
+06:32:23.892 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for RuleEvaluationResult name=child of #132#133
+06:32:23.893 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for HttpServletRequest name=#134
+06:32:23.895 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for ServletInputStream name=child of #134#135
+06:32:23.896 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for HttpServletResponse name=#136
+06:32:23.896 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for FilterChain name=#137
+06:32:23.897 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering io.perculator.core.filter.PerculatorFilterTest$createServletInputStream$1@3a2bb026 on HttpServletRequest(#134).getInputStream()
+06:32:23.897 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering UTF-8 on HttpServletRequest(#134).getCharacterEncoding()
+06:32:23.898 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering RuleEvaluationResult(action=ALLOW, ruleName=test-rule, matchedRules=[]) on Perculator(#132).evaluate(io.perculator.core.request.JakartaServletRequestAdapter@756c67cd)
+06:32:23.898 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering kotlin.Unit on FilterChain(#137).doFilter(io.perculator.core.request.CachingRequestWrapper@50de907a, HttpServletResponse(#136))
+06:32:23.899 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Unit name=child of #137#138
+06:32:23.901 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Unit name=child of #136#139
+06:32:23.903 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for Unit name=child of #136#140
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

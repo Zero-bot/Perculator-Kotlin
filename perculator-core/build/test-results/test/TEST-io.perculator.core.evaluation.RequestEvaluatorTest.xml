@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.perculator.core.evaluation.RequestEvaluatorTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2026-03-25T06:32:23" hostname="(none)" time="0.045">
+  <properties/>
+  <testcase name="queryStringEquals matches()" classname="io.perculator.core.evaluation.RequestEvaluatorTest" time="0.005"/>
+  <testcase name="methodEquals matches case-insensitively()" classname="io.perculator.core.evaluation.RequestEvaluatorTest" time="0.002"/>
+  <testcase name="schemeEquals matches()" classname="io.perculator.core.evaluation.RequestEvaluatorTest" time="0.003"/>
+  <testcase name="queryStringContains throws when query string null()" classname="io.perculator.core.evaluation.RequestEvaluatorTest" time="0.003"/>
+  <testcase name="serverEquals matches()" classname="io.perculator.core.evaluation.RequestEvaluatorTest" time="0.004"/>
+  <testcase name="portNotEquals returns true for different port()" classname="io.perculator.core.evaluation.RequestEvaluatorTest" time="0.003"/>
+  <testcase name="isPostRequest returns true for POST()" classname="io.perculator.core.evaluation.RequestEvaluatorTest" time="0.002"/>
+  <testcase name="uriEquals matches exact URI()" classname="io.perculator.core.evaluation.RequestEvaluatorTest" time="0.002"/>
+  <testcase name="uriMatch uses regex()" classname="io.perculator.core.evaluation.RequestEvaluatorTest" time="0.002"/>
+  <testcase name="portEquals matches()" classname="io.perculator.core.evaluation.RequestEvaluatorTest" time="0.001"/>
+  <testcase name="null key throws for operators requiring key()" classname="io.perculator.core.evaluation.RequestEvaluatorTest" time="0.002"/>
+  <testcase name="isGetRequest returns true for GET()" classname="io.perculator.core.evaluation.RequestEvaluatorTest" time="0.003"/>
+  <testcase name="methodNotEquals returns true for different method()" classname="io.perculator.core.evaluation.RequestEvaluatorTest" time="0.002"/>
+  <testcase name="serverMatch uses regex()" classname="io.perculator.core.evaluation.RequestEvaluatorTest" time="0.002"/>
+  <testcase name="isGetRequest returns false for POST()" classname="io.perculator.core.evaluation.RequestEvaluatorTest" time="0.002"/>
+  <testcase name="uriContains checks substring()" classname="io.perculator.core.evaluation.RequestEvaluatorTest" time="0.002"/>
+  <system-out><![CDATA[06:32:23.314 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#101
+06:32:23.318 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering name=john on PerculatorHttpRequest(#101).getQueryString()
+06:32:23.319 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#102
+06:32:23.321 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering GET on PerculatorHttpRequest(#102).getMethod()
+06:32:23.322 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#103
+06:32:23.324 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering https on PerculatorHttpRequest(#103).getScheme()
+06:32:23.325 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#104
+06:32:23.327 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering null on PerculatorHttpRequest(#104).getQueryString()
+06:32:23.328 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#105
+06:32:23.331 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering example.com on PerculatorHttpRequest(#105).getServerName()
+06:32:23.332 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#106
+06:32:23.335 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering 8080 on PerculatorHttpRequest(#106).getServerPort()
+06:32:23.336 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#107
+06:32:23.337 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering POST on PerculatorHttpRequest(#107).getMethod()
+06:32:23.338 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#108
+06:32:23.339 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering /api/v1/users on PerculatorHttpRequest(#108).getRequestUri()
+06:32:23.340 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#109
+06:32:23.341 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering /api/v1/users on PerculatorHttpRequest(#109).getRequestUri()
+06:32:23.342 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#110
+06:32:23.344 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering 443 on PerculatorHttpRequest(#110).getServerPort()
+06:32:23.345 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#111
+06:32:23.347 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#112
+06:32:23.349 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering GET on PerculatorHttpRequest(#112).getMethod()
+06:32:23.350 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#113
+06:32:23.351 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering GET on PerculatorHttpRequest(#113).getMethod()
+06:32:23.352 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#114
+06:32:23.354 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering api.example.com on PerculatorHttpRequest(#114).getServerName()
+06:32:23.355 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#115
+06:32:23.356 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering POST on PerculatorHttpRequest(#115).getMethod()
+06:32:23.357 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory -- Creating mockk for PerculatorHttpRequest name=#116
+06:32:23.359 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState -- Answering /api/v1/users on PerculatorHttpRequest(#116).getRequestUri()
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

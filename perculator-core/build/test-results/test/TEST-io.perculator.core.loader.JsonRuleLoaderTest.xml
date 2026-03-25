@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.perculator.core.loader.JsonRuleLoaderTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-03-25T06:32:23" hostname="(none)" time="0.625">
+  <properties/>
+  <testcase name="invalid JSON throws RuleLoadException()" classname="io.perculator.core.loader.JsonRuleLoaderTest" time="0.499"/>
+  <testcase name="rule has correct conditions()" classname="io.perculator.core.loader.JsonRuleLoaderTest" time="0.031"/>
+  <testcase name="rule with context conditions parses correctly()" classname="io.perculator.core.loader.JsonRuleLoaderTest" time="0.014"/>
+  <testcase name="rules are sorted by priority()" classname="io.perculator.core.loader.JsonRuleLoaderTest" time="0.014"/>
+  <testcase name="missing file throws RuleLoadException()" classname="io.perculator.core.loader.JsonRuleLoaderTest" time="0.002"/>
+  <testcase name="rule has correct action mapping()" classname="io.perculator.core.loader.JsonRuleLoaderTest" time="0.026"/>
+  <testcase name="empty rules file returns empty list()" classname="io.perculator.core.loader.JsonRuleLoaderTest" time="0.012"/>
+  <testcase name="loads valid rules file()" classname="io.perculator.core.loader.JsonRuleLoaderTest" time="0.019"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
